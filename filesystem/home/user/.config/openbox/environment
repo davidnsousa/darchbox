@@ -1,0 +1,24 @@
+#
+# Set system-wide environment variables here for Openbox
+# User-specific variables should be placed in $HOME/.config/openbox/environment
+#
+
+# To set your language for displaying messages and time/date formats, use the following:
+#LANG=en_CA.UTF8
+
+# To set your keyboard layout, you need to modify your X config:
+# http://www.google.com/search?q=how+to+set+keyboard+layout+xorg
+
+export BATDEVICE=$(echo /sys/class/power_supply/$(ls /sys/class/power_supply/ | grep BAT))
+export WIFIDEVICE=$(nmcli device status | awk '$2=="wifi"{print $1}')
+export ETHERNETDEVICE=$(nmcli device status | awk '$2=="ethernet"{print $1}')
+export XDG_CONFIG_HOME=$HOME/.config
+
+export EDITOR=geany
+export TERMINAL=xterm
+export FILEMANAGER=pcmanfm
+export CTRLSOUND=pavucontrol
+export CTRLDISPLAYS=arandr
+export CTRLNETWORK=nm-connection-editor
+export CTRLBLUETOOTH=blueman-manager
+export SCREENSHOT=gscreenshot

@@ -1,0 +1,7 @@
+! xterm appearance and behavior
+xterm*font: xft:DejaVu Sans Mono:size=10
+xterm*background: #1d2021
+xterm*foreground: #ffffff
+xterm*highlightColor: #5f5f5f
+xterm*highlightSelection: true
+xterm*scrollBar: false
