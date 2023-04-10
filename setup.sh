@@ -41,6 +41,7 @@ PKGS=(
     pactl
     feh
     dialog
+    libnotify
 )
 
 # INSTALL yay
