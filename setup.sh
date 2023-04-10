@@ -1,4 +1,6 @@
 
+#!/bin/bash
+
 # PKGS FOR DE
 
 PKGS=(
@@ -18,7 +20,6 @@ PKGS=(
     arc-solid-gtk-theme
     arc-icon-theme
     ttf-dejavu
-    fish
     bluez
     bluez-utils
     blueman
@@ -42,16 +43,18 @@ PKGS=(
 
 # INSTALL yay
 
-cd $HOME
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-yay --save --nocleanmenu --nodiffmenu
-cd $pwd
+which yay || (
+  cd $HOME
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si
+  yay --save --nocleanmenu --nodiffmenu
+  cd $pwd
+)
 
 # UPDATE SYSTEM
 
-yay
+yay --noconfirm
 
 # INSTALL PKGS
 
@@ -73,9 +76,4 @@ sudo gpasswd -a $USER video
 cp -r filesystem/home/user/ $HOME
 sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
 
-# configure fish
-
-fish -c "set -U fish_greeting"
-echo "Costumize fish prompt:"
-fish -c "fish_config prompt choose informative; fish_config prompt save"
-echo fish > .bashrc
+echo "Finished!"
