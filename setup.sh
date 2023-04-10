@@ -1,6 +1,8 @@
 
 #!/bin/bash
 
+dlemonbox_dir=$(pwd)
+
 # PKGS FOR DE
 
 PKGS=(
@@ -49,7 +51,7 @@ which yay || (
   cd yay
   makepkg -si
   yay --save --nocleanmenu --nodiffmenu
-  cd $pwd
+  cd $dlemonbox_dir
 )
 
 # UPDATE SYSTEM
