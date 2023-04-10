@@ -75,7 +75,7 @@ sudo gpasswd -a $USER video
 
 # COPY CONFIGURATION FILES
 
-cp -r filesystem/home/user/ $HOME
+cp -r filesystem/home/user/. $HOME
 sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
 
 echo "Finished!"
