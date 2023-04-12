@@ -42,6 +42,7 @@ PKGS=(
     feh
     dialog
     libnotify
+    slock
 )
 
 # INSTALL yay
