@@ -1,6 +1,5 @@
+udiskie &
 feh --bg-fill ~/.wallpaper.jpg &
-xrdb -merge ~/.Xresources &
 xcompmgr &
 dunst &
-sh $XDG_CONFIG_HOME/scripts/lemonbar.sh &
-(sleep 2 && pcmanfm -d) &
+bash $XDG_CONFIG_HOME/scripts/lemonbar.sh &

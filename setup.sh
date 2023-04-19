@@ -14,6 +14,7 @@ PKGS=(
     xterm
     xcompmgr
     gvfs
+    udiskie
     htop
     pavucontrol
     network-manager-applet
