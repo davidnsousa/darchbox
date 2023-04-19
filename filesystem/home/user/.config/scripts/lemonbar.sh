@@ -52,7 +52,7 @@ backlight() {
 
 mem() {
 	usage=$(free -m | awk 'NR==2{printf "%.1f%%", $3*100/$2 }')
-	echo "\uf1c0 $usage"
+	echo "\uf1c0 $usage" 
 }
 
 cpu() {
@@ -62,7 +62,7 @@ cpu() {
 
 disk() {
 	usage=$(df -x tmpfs -x devtmpfs -x devfs -h / | awk '{print $5}' | tail -n1)
-	echo "\uf51f $usage%"
+	echo "\uf51f $usage%" 
 }
 
 battery() {
@@ -137,7 +137,7 @@ exit_ob(){
 }
 
 launchers_status_bar() {
-	echo "%{A:bash $XDG_CONFIG_HOME/scripts/keybindings.sh &:} \uf11c%{A}"
+	echo "%{A:bash $XDG_CONFIG_HOME/scripts/keybindings.sh &:} \uf11c%{A}" 
 }
 
 ext_devices() {
@@ -146,7 +146,8 @@ ext_devices() {
 	for device in $devices; do
 		device_path=$(df | grep $device | awk '{print $6}')
 		device_usage=$(df | grep $device | awk '{print $5}')
-		device_list+="%{F#06cf00}%{A:$FILEMANAGER $device_path &:} \uf287%{A}%{F-} $device $device_usage "
+		device_fs=$(df | grep $device | awk '{print $1}')
+		device_list+="%{F#06cf00}%{A:$FILEMANAGER $device_path &:}%{A3:udiskie-umount $device_fs &:} \uf287%{F-} $device $device_usage %{A3}%{A}"
 	done
 	echo $device_list
 }
@@ -155,25 +156,25 @@ ext_devices() {
 
 while true; do
     BAR_S="%{l}$(launchers_status_bar)
-    $(ext_devices)
     $(update_system)
+    $(ext_devices)
     %{r}
     %{A:$TERMINAL -e htop &:}
-	$(cpu)
-	$(load)
-	$(mem)
-	$(disk)%{A}
-	$(battery)
-    %{A:pavucontrol &:}$(sound_volume)%{A}
-    $(backlight)
+	$(cpu) 
+	$(load) 
+	$(mem) 
+	$(disk)%{A} 
+	$(battery) 
+    %{A:pavucontrol &:}$(sound_volume)%{A} 
+    $(backlight) 
     %{A3:bash $XDG_CONFIG_HOME/scripts/bluetooth_toggle.sh &:}%{A:blueman-manager &:}$(bluetooth)%{A}%{A3}
-    %{A3:bash $XDG_CONFIG_HOME/scripts/wifi_menu_right_click.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/wifi_menu.sh &:}$(wifi)%{A}
-    $(vpn)
-    $(ethernet)
+    %{A3:bash $XDG_CONFIG_HOME/scripts/wifi_menu_right_click.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/wifi_menu.sh &:}$(wifi)%{A} 
+    $(vpn) 
+    $(ethernet) 
     %{A3}
     $(my_uptime)
-    %{A:bash $XDG_CONFIG_HOME/scripts/wifi-menu.sh &:}$(clock)%{A}
-    $(exit_ob)"
+    %{A:bash $XDG_CONFIG_HOME/scripts/wifi-menu.sh &:}$(clock)%{A} 
+    $(exit_ob)" 
     echo -e $BAR_S
     sleep 1
 done | lemonbar -a 100 -B "#383c4a" -f "DejaVu Sans:size=9" -f 'Font Awesome 6 Free:size=10' -f 'Font Awesome 6 Brands:size=10' -f 'Font Awesome 6 Free Solid:size=10' | bash &
@@ -192,8 +193,8 @@ button_state() {
 }
 
 launchers_taskbar() {
-	echo "%{A:$TERMINAL &:} \uf120%{A}
-		%{A: $FILEMANAGER &:} \uf07c%{A}"
+	echo "%{A:$TERMINAL &:} \uf120%{A} 
+		%{A: $FILEMANAGER &:} \uf07c%{A}" 
 }
 
 # TASKBAR
