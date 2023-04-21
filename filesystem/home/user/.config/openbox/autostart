@@ -1,4 +1,4 @@
-udiskie &
+udiskie --no-notify &
 feh --bg-fill ~/.wallpaper.jpg &
 xcompmgr &
 dunst &
