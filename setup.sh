@@ -17,7 +17,7 @@ PKGS=(
     udiskie
     htop
     pavucontrol
-    network-manager-applet
+    networkmanager
     light
     openbox-arc-git
     arc-solid-gtk-theme
