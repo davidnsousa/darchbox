@@ -28,6 +28,7 @@ chromium
 google-chrome
 firefox
 librewolf-bin
+mullvad-browser-bin
 thunderbird
 transmission-gtk
 megasync-bin
@@ -59,3 +60,4 @@ protonmail-bridge-bin
 protonmail-bridge-nogui
 protonmail-bridge-nokeychain
 stellarium-bin
+lmms
