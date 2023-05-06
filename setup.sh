@@ -16,7 +16,7 @@ PKGS=(
     gvfs
     udiskie
     htop
-    pavucontrol
+    pulsemixer
     networkmanager
     light
     openbox-arc-git

@@ -118,7 +118,7 @@ ethernet() {
 }
 
 vpn() {
-	connection=$(nmcli connection show --active | grep -q vpn && echo "↑" || echo "↓")
+	connection=$(nmcli connection show --active | grep -q -E "vpn|wireguard" && echo "↑" || echo "↓")
 	#name=$(nmcli connection show --active | grep vpn | awk '{print $1}')
 	if [ $connection = "↑" ]; then
 		echo "%{F#3941d6}\uf542%{F-}"
@@ -165,7 +165,7 @@ while true; do
 	$(mem) 
 	$(disk)%{A} 
 	$(battery) 
-    %{A:pavucontrol &:}$(sound_volume)%{A} 
+    %{A:$CTRLSOUND &:}$(sound_volume)%{A} 
     $(backlight) 
     %{A3:bash $XDG_CONFIG_HOME/scripts/bluetooth_toggle.sh &:}%{A:blueman-manager &:}$(bluetooth)%{A}%{A3}
     %{A3:bash $XDG_CONFIG_HOME/scripts/wifi_menu_right_click.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/wifi_menu.sh &:}$(wifi)%{A} 
