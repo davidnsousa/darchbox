@@ -273,7 +273,7 @@
     </keybind>
 	<keybind key="W-b">
       <action name="Execute">
-        <command>bash -c '$CTRLBLUETOOTH'</command>
+        <command>bash -c '$XDG_CONFIG_HOME/scripts/bluetooth_menu.sh'</command>
       </action>
     </keybind>
 	<keybind key="W-m">

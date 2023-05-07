@@ -167,7 +167,7 @@ while true; do
 	$(battery) 
     %{A:$CTRLSOUND &:}$(sound_volume)%{A} 
     $(backlight) 
-    %{A3:bash $XDG_CONFIG_HOME/scripts/bluetooth_toggle.sh &:}%{A:blueman-manager &:}$(bluetooth)%{A}%{A3}
+    %{A3:bash $XDG_CONFIG_HOME/scripts/bluetooth_toggle.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/bluetooth_menu.sh &:}$(bluetooth)%{A}%{A3}
     %{A3:bash $XDG_CONFIG_HOME/scripts/wifi_menu_right_click.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/wifi_menu.sh &:}$(wifi)%{A} 
     $(vpn) 
     $(ethernet) 

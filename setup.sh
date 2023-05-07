@@ -25,7 +25,6 @@ PKGS=(
     ttf-dejavu
     bluez
     bluez-utils
-    blueman
     man-db
     pcmanfm
     arandr
