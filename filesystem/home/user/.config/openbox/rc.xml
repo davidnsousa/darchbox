@@ -283,7 +283,7 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>bash -c '$SCREENSHOT'</command>
+        <command>bash -c '$XDG_CONFIG_HOME/scripts/screenshot.sh'</command>
       </action>
     </keybind>
        <keybind key="W-u">

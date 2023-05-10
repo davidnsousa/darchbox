@@ -33,7 +33,7 @@ PKGS=(
     geany
     xarchiver
     xf86-input-synaptics
-    gscreenshot
+    scrot
     ttf-font-awesome
     lemonbar-xft-git
     wmctrl

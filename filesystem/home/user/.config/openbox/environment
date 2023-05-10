@@ -14,9 +14,8 @@ export WIFIDEVICE=$(nmcli device status | awk '$2=="wifi"{print $1}')
 export ETHERNETDEVICE=$(nmcli device status | awk '$2=="ethernet"{print $1}')
 export XDG_CONFIG_HOME=$HOME/.config
 
-export EDITOR=geany
+export EDITOR='geany -i'
 export TERMINAL=xterm
 export FILEMANAGER=pcmanfm
 export CTRLSOUND='xterm -e pulsemixer'
 export CTRLDISPLAYS=arandr
-export SCREENSHOT=gscreenshot
