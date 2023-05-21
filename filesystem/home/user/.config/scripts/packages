@@ -16,6 +16,7 @@ nano
 atril
 pdftk
 xournalapp
+meld
 octave
 vscodium-bin
 pulsar-bin
@@ -32,6 +33,7 @@ mullvad-browser-bin
 thunderbird
 transmission-gtk
 megasync-bin
+onedriver
 thunar-megasync-bin
 zoom
 telegram-desktop-bin
