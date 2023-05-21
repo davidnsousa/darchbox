@@ -80,10 +80,14 @@ battery() {
 bluetooth() {
 	connection=$(bluetoothctl show | grep -q "Powered: yes" && echo "↑" || echo "↓")
 	device=$(bluetoothctl info | grep -q "Connected: yes" && bluetoothctl info | grep -o 'Name:.*' | sed 's/Name: //')
-	if [ $connection = "↑" ]; then
+	if [ $(bluetoothctl info | grep "Connected" | awk '{print $2}') = "yes" ]; then
 		echo "%{F#3941d6}\uf293%{F-} $device"
 	else
-		echo "\uf293 $connection"
+		if [ $connection = "↑" ]; then
+			echo "\uf293 "
+		else
+			echo "%{F#FF0000}\uf293 %{F-}"
+		fi
 	fi
 }
 
@@ -100,10 +104,14 @@ wifi() {
 		elif [ $signal -ge 66 ]; then
 			echo "%{F#06cf00}\uf1eb%{F-} $ssid $adress"
 		else
-			echo "\uf1eb $connection"
+			echo "\uf1eb "
 		fi
 	else
-		echo "\uf1eb $connection"
+		if [ $(nmcli networking | grep enabled) = "enabled" ] && [ $(nmcli radio wifi | grep enabled) = "enabled" ]; then
+			echo "\uf1eb "
+		else
+			echo "%{F#FF0000}\uf1eb %{F-}"
+		fi
 	fi
 }
 
@@ -113,7 +121,11 @@ ethernet() {
 	if [ $connection = "↑" ]; then
 		echo "%{F#3941d6}\uf0ac%{F-} $adress"
 	else
-		echo "\uf0ac$connection"
+		if [ $(nmcli networking | grep enabled) = "enabled" ]; then
+			echo "\uf0ac "
+		else
+			echo "%{F#FF0000}\uf0ac%{F-}"
+		fi
 	fi
 }
 
@@ -123,7 +135,11 @@ vpn() {
 	if [ $connection = "↑" ]; then
 		echo "%{F#3941d6}\uf542%{F-}"
 	else
-		echo "\uf542$connection"
+		if [ $(nmcli networking | grep enabled) = "enabled" ] ; then
+			echo "\uf542 "
+		else
+			echo "%{F#FF0000}\uf542%{F-}"
+		fi
 	fi
 }
 
@@ -173,7 +189,7 @@ while true; do
     $(ethernet) 
     %{A3}
     $(my_uptime)
-    %{A:bash $XDG_CONFIG_HOME/scripts/wifi-menu.sh &:}$(clock)%{A} 
+    $(clock)
     $(exit_ob)" 
     echo -e $BAR_S
     sleep 1
