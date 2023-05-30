@@ -1,5 +1,5 @@
 udiskie --no-notify &
-feh --bg-fill ~/.wallpaper.jpg &
+bash $XDG_CONFIG_HOME/scripts/set_wallpaper.sh &
 xcompmgr &
 dunst &
 bash $XDG_CONFIG_HOME/scripts/lemonbar.sh &
