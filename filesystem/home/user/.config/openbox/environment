@@ -19,3 +19,4 @@ export TERMINAL=xterm
 export FILEMANAGER=pcmanfm
 export CTRLSOUND='xterm -e pulsemixer'
 export CTRLDISPLAYS=arandr
+export IMGVIEWER=mirage
