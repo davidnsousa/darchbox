@@ -333,7 +333,7 @@
     </keybind>
     <keybind key="W-r">
       <action name="Execute">
-        <command>bash -c 'openbox --reconfigure &amp;&amp; killall -SIGUSR2 lemonbar &amp;&amp; bash $XDG_CONFIG_HOME/scripts/lemonbar.sh'</command>
+        <command>bash -c 'openbox --reconfigure'</command>
       </action>
     </keybind>
 	<keybind key="XF86AudioRaiseVolume">

@@ -2,4 +2,5 @@ udiskie --no-notify &
 bash $XDG_CONFIG_HOME/scripts/set_wallpaper.sh &
 xcompmgr &
 dunst &
-bash $XDG_CONFIG_HOME/scripts/lemonbar.sh &
+bash $XDG_CONFIG_HOME/scripts/statusbar.sh &
+bash $XDG_CONFIG_HOME/scripts/taskbar.sh &
