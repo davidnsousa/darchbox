@@ -7,7 +7,7 @@ option3="Shutdown"
 
 options="$option0\n$option1\n$option2\n$option3"
 
-chosen="$(echo -e "$options" | dmenu -nb '#383c4a' -nf '#ffffff' -sb '#5294e2' -fn 'DejaVu Sans:size=9.6')"
+chosen="$(echo -e "$options" | eval "dmenu $DMENU_ARGS")"
 case $chosen in
 	$option0)
 		slock;;
