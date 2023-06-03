@@ -1,13 +1,26 @@
 #!/bin/bash
 
+chosen_icon() {
+	window=$(wmctrl -lx | grep $1)
+	if echo "$window" | grep -qE "xterm"; then
+        echo "\uf120"
+    elif echo "$window" | grep -qE "Navigator|chrome"; then
+		echo "\uf26b"
+	elif echo "$window" | grep -qE "pcmanfm"; then
+		echo "\uf07c"
+    else
+        echo "\uf15b"
+    fi
+}
+
 button_state() {
     active_win=$(xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}' | awk '{print strtonum("0x" substr($0, 3))}')
     DEC_ID1=$(printf "%d" $active_win)
     DEC_ID2=$(printf "%d" $1)
     if [ $DEC_ID1 == $DEC_ID2 ]; then
-        echo "%{B#5294e2} \x20 $2 \x20 %{B-}"
+        echo "%{B#5294e2} \x20 $3 $2 \x20 %{B-}"
     else
-        echo " \x20 $2 \x20 "
+        echo " \x20 $3 $2 \x20 "
     fi
 }
 
@@ -30,7 +43,8 @@ xev -root | grep -E --line-buffered "_NET_ACTIVE_WINDOW|CreateNotify|DestroyNoti
     BAR_INPUT="%{l}$desktops %{c}"
     for ID in $IDS; do
         NAME=$(wmctrl -l | grep $ID | awk '{$1=""; $2=""; $3=""; sub(/^ */, ""); title=$0; if(length(title)>10) title=substr(title, 1, 10) " ..."; print title}')
-        BAR_INPUT+="%{A: wmctrl -i -a $ID &:}%{A3: wmctrl -i -c $ID &:}$(button_state $ID "$NAME")%{A}%{A3}"
+        ICON=$(chosen_icon $ID)
+        BAR_INPUT+="%{A: wmctrl -i -a $ID &:}%{A3: wmctrl -i -c $ID &:}$(button_state $ID "$NAME" "$ICON")%{A}%{A3}"
     done
     echo -e $BAR_INPUT
 done | lemonbar -a 100 -b -B "#383c4a" -f "DejaVu Sans:size=9" -f 'Font Awesome 6 Free:size=10' -f 'Font Awesome 6 Brands:size=10' -f 'Font Awesome 6 Free Solid:size=10' | bash &
