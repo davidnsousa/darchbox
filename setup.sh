@@ -43,6 +43,8 @@ PKGS=(
     dialog
     libnotify
     slock
+    curl
+    surf
 )
 
 # INSTALL yay
