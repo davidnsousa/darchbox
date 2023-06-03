@@ -4,8 +4,10 @@ chosen_icon() {
 	window=$(wmctrl -lx | grep $1)
 	if echo "$window" | grep -qE "xterm"; then
         echo "\uf120"
-    elif echo "$window" | grep -qE "Navigator|chrome"; then
-		echo "\uf26b"
+    elif echo "$window" | grep -qE "Navigator"; then
+		echo "\ue007"
+	elif echo "$window" | grep -qE "chrome"; then
+		echo "\uf268"
 	elif echo "$window" | grep -qE "pcmanfm"; then
 		echo "\uf07c"
     else
