@@ -91,7 +91,7 @@ battery() {
 bluetooth() {
 	connection=$(bluetoothctl show | grep -q "Powered: yes" && echo "↑" || echo "↓")
 	device=$(bluetoothctl info | grep -q "Connected: yes" && bluetoothctl info | grep -o 'Name:.*' | sed 's/Name: //')
-	if [ $(bluetoothctl info | grep "Connected" | awk '{print $2}') = "yes" ]; then
+	if [ $(bluetoothctl info | grep "Connected" | awk '{print $2}') ]; then
 		echo "%{F#3941d6}\uf293%{F-} $device"
 	else
 		if [ $connection = "↑" ]; then
