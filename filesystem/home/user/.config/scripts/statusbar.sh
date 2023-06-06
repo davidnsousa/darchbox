@@ -24,6 +24,17 @@ update_system() {
 	fi
 }
 
+monitors() {
+	primary_monitor=$(xrandr --listmonitors | tail -n +2 | grep '*' | awk '{print $NF}')
+	if [ $(xrandr | grep $HDMI | awk '{print $2}') = 'connected' ]; then
+		if [ $primary_monitor != $HDMI ]; then
+			echo '%{A:bash $XDG_CONFIG_HOME/scripts/change_monitor.sh &:} \uf390%{A}'
+		elif [ $primary_monitor = $HDMI ]; then
+			echo '%{A:bash $XDG_CONFIG_HOME/scripts/change_monitor.sh &:} \uf109%{A}'
+		fi
+	fi
+}
+
 my_uptime() {
 	hours=$(uptime | awk '{print $3}' | tr -d ',')
 	echo " \uf64a $hours"
@@ -172,6 +183,7 @@ ext_devices() {
 
 while true; do
     BAR_S="%{l}$(launchers_status_bar)
+    $(monitors)
     $(update_system)
     $(ext_devices)
     %{r}
