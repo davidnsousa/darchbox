@@ -197,7 +197,7 @@
     </keybind>
     <!--kb Reconfigure openbox--><keybind key="W-r">
       <action name="Execute">
-        <command>bash -c 'openbox --reconfigure'</command>
+        <command>bash -c 'openbox --reconfigure; killall -SIGUSR2 lemonbar; bash $XDG_CONFIG_HOME/scripts/statusbar.sh; bash $XDG_CONFIG_HOME/scripts/taskbar.sh'</command>
       </action>
     </keybind>
    	<!--kb Application launcher--><keybind key="W-x">
