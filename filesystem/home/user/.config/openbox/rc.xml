@@ -178,7 +178,7 @@
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-   
+
    <!-- Keybindings for running applications -->
    	<!--kb Show Keybindings--><keybind key="W-k">
       <action name="Execute">
@@ -197,7 +197,7 @@
     </keybind>
     <!--kb Reconfigure openbox--><keybind key="W-r">
       <action name="Execute">
-        <command>bash -c 'openbox --reconfigure; killall -SIGUSR2 lemonbar; bash $XDG_CONFIG_HOME/scripts/statusbar.sh; bash $XDG_CONFIG_HOME/scripts/taskbar.sh'</command>
+        <command>bash -c 'openbox --reconfigure; killall -SIGUSR2 lemonbar; sleep 0.1; bash $XDG_CONFIG_HOME/scripts/statusbar.sh; bash $XDG_CONFIG_HOME/scripts/taskbar.sh'</command>
       </action>
     </keybind>
    	<!--kb Application launcher--><keybind key="W-x">
@@ -762,7 +762,7 @@ z  <menu>
   # order that they appear in this list
 
 
-    # each rule element can be left out or set to 'default' to specify to not 
+    # each rule element can be left out or set to 'default' to specify to not
     # change that attribute of the window
 
     <decor>yes</decor>
