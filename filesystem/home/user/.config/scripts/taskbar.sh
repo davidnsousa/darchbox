@@ -4,12 +4,28 @@ chosen_icon() {
 	window=$(wmctrl -lx | grep $1)
 	if echo "$window" | grep -qE "xterm"; then
         echo "\uf120"
-    elif echo "$window" | grep -qE "Navigator"; then
+    elif echo "$window" | grep -qE "LibreWolf|firefox|mullvadbrowser"; then
 		echo "\ue007"
 	elif echo "$window" | grep -qE "chrome"; then
 		echo "\uf268"
 	elif echo "$window" | grep -qE "pcmanfm"; then
 		echo "\uf07c"
+	elif echo "$window" | grep -qE "Telegram"; then
+		echo "\uf2c6"
+	elif echo "$window" | grep -qE "zoom"; then
+		echo "\uf03d"
+	elif echo "$window" | grep -qE "MEGAsync"; then
+		echo "\u4d"
+	elif echo "$window" | grep -qE "VirtualBox"; then
+		echo "\uf49e"
+	elif echo "$window" | grep -qE "Mirage"; then
+		echo "\uf03e"
+	elif echo "$window" | grep -qE "Gimp|Inkscape"; then
+		echo "\uf1fc"
+	elif echo "$window" | grep -qE "vlc"; then
+		echo "\ue131"
+	elif echo "$window" | grep -qE "Geany|Pulsar"; then
+		echo "\uf1c9"
     else
         echo "\uf15b"
     fi
