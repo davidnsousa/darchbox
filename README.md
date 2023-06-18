@@ -10,4 +10,4 @@ Mounted external devices (including HDMI) are shown and can be accessed from the
 
 The [configuration files](filesystem/home/user/) located in ~ and downstream control the entire DE.
 
-![alt text](https://imgur.com/n6DJVWZ "dlemonbox desktop")
+![alt text](https://imgur.com/n6DJVWZ.png "dlemonbox desktop")
