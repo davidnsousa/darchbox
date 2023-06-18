@@ -45,6 +45,7 @@ PKGS=(
     slock
     curl
     surf
+    neofetch
 )
 
 # INSTALL yay
@@ -87,4 +88,4 @@ sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
 cd $HOME
 git clone https://github.com/davidnsousa/wallpapers
 
-echo "Finished!"
+echo "Finished! Reboot."

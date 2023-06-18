@@ -26,6 +26,8 @@ chosen_icon() {
 		echo "\ue131"
 	elif echo "$window" | grep -qE "Geany|Pulsar"; then
 		echo "\uf1c9"
+	elif echo "$window" | grep -qE "Surf"; then
+		echo "\uf7a2"
     else
         echo "\uf15b"
     fi
