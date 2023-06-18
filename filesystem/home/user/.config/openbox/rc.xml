@@ -220,7 +220,12 @@
         <command>bash -c '$EDITOR'</command>
       </action>
     </keybind>
-    <!--kb Display--><keybind key="W-p">
+    <!--kb Displays --><keybind key="W-p">
+      <action name="Execute">
+        <command>bash -c '$CTRLDISPLAYS'</command>
+      </action>
+    </keybind>
+    <!--kb Switch between HDMI and eDP --><keybind key="W-h">
       <action name="Execute">
         <command>bash -c '$XDG_CONFIG_HOME/scripts/change_monitor.sh'</command>
       </action>
