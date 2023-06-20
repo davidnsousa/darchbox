@@ -19,8 +19,11 @@ update_system() {
 	test -e ~/.nupdates && nupdates=$(cat ~/.nupdates)
 	test -e ~/.nupdates && if [ "$nupdates" != 0 ]; then
 		echo "%{A:$TERMINAL -e yay &:}%{F#06cf00} \uf021%{F-} $nupdates%{A}"
-	else
-		echo " "
+	fi
+}
+check_for_updates() {
+	test -e ~/.update_de && if [ $(cat ~/.update_de) = "true" ] ; then
+		echo "%{F#e013a4} \uf021%{F-}"
 	fi
 }
 
@@ -185,6 +188,7 @@ while true; do
     BAR_S="%{l}$(launchers_status_bar)
     $(monitors)
     $(update_system)
+    $(check_for_updates)
     $(ext_devices)
     %{r}
     %{A:$TERMINAL -e htop &:}

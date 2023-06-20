@@ -88,4 +88,8 @@ sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
 cd $HOME
 git clone https://github.com/davidnsousa/wallpapers
 
+# take note of time of Installation to compare with commit dates and notify updates
+
+echo date +%s > ~/.last_update_date
+
 echo "Finished! Reboot."

@@ -4,3 +4,4 @@ xcompmgr &
 dunst &
 bash $XDG_CONFIG_HOME/scripts/statusbar.sh &
 bash $XDG_CONFIG_HOME/scripts/taskbar.sh &
+bash $XDG_CONFIG_HOME/scripts/check_for_updates.sh &
