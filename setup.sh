@@ -91,6 +91,6 @@ git clone https://github.com/davidnsousa/wallpapers
 
 # take note of installation date to compare with commit dates and notify updates
 
-echo date +%s > ~/.last_update_date
+echo $(date +%s) > ~/.last_update_date
 
 echo "Finished! Reboot."
