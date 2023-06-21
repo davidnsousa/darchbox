@@ -23,7 +23,7 @@ update_system() {
 }
 check_for_updates() {
 	test -e ~/.update_de && if [ $(cat ~/.update_de) = "true" ] ; then
-		echo "%{F#e013a4} \uf021%{F-}"
+		echo "%{A:bash $XDG_CONFIG_HOME/scripts/update_de.sh &:}%{F#e013a4} \uf021%{F-}%{A}"
 	fi
 }
 
