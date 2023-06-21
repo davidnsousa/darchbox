@@ -11,5 +11,7 @@ if ping -q -c 1 -W 1 ping.eu > /dev/null ; then
 	bash $XDG_CONFIG_HOME/scripts/refresh.sh
 	notify-send "Desktop environment updated. You might need to restart x."
 	
+	# take note of update date to compare with commit dates and notify updates
+	echo date +%s > ~/.last_update_date
 fi
 
