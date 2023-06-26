@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo 0 > .nupdates
+echo 0 > ~/.nupdates
 
 system_kernel() {
 	echo "$(uname -r)"
