@@ -14,7 +14,5 @@ last_commit_date_timsetamp=$(date -d $last_commit_date +%s)
 last_update_date=$(cat ~/.last_update_date)
 
 if [ $last_commit_date_timsetamp -gt $last_update_date ]; then
-	echo true > ~/.update_de
-else
-	echo false > ~/.update_de
+	touch ~/.update_de
 fi

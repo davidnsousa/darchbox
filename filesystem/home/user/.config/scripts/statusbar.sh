@@ -22,9 +22,7 @@ update_system() {
 	fi
 }
 check_for_updates() {
-	test -e ~/.update_de && if [ $(cat ~/.update_de) = "true" ] ; then
-		echo "%{A:bash $XDG_CONFIG_HOME/scripts/update_de.sh &:}%{F#e013a4} \uf021%{F-}%{A}"
-	fi
+	test -e ~/.update_de && echo "%{A:bash $XDG_CONFIG_HOME/scripts/update_de.sh &:}%{F#e013a4} \uf021%{F-}%{A}"
 }
 
 monitors() {
@@ -66,7 +64,7 @@ backlight() {
 
 mem() {
 	usage=$(free -m | awk 'NR==2{printf "%.1f%%", $3*100/$2 }')
-	echo "\uf1c0 $usage" 
+	echo "\uf1c0 $usage"
 }
 
 cpu() {
@@ -76,7 +74,7 @@ cpu() {
 
 disk() {
 	usage=$(df -x tmpfs -x devtmpfs -x devfs -h / | awk '{print $5}' | tail -n1)
-	echo "\uf51f $usage%" 
+	echo "\uf51f $usage%"
 }
 
 battery() {
@@ -167,7 +165,7 @@ exit_ob(){
 }
 
 launchers_status_bar() {
-	echo "%{A:bash $XDG_CONFIG_HOME/scripts/keybindings.sh &:} \uf11c%{A}" 
+	echo "%{A:bash $XDG_CONFIG_HOME/scripts/keybindings.sh &:} \uf11c%{A}"
 }
 
 ext_devices() {
@@ -192,21 +190,21 @@ while true; do
     $(ext_devices)
     %{r}
     %{A:$TERMINAL -e htop &:}
-	$(cpu) 
-	$(load) 
-	$(mem) 
-	$(disk)%{A} 
-	$(battery) 
-    %{A:$CTRLSOUND &:}$(sound_volume)%{A} 
-    $(backlight) 
+	$(cpu)
+	$(load)
+	$(mem)
+	$(disk)%{A}
+	$(battery)
+    %{A:$CTRLSOUND &:}$(sound_volume)%{A}
+    $(backlight)
     %{A3:bash $XDG_CONFIG_HOME/scripts/bluetooth_toggle.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/bluetooth_menu.sh &:}$(bluetooth)%{A}%{A3}
-    %{A3:bash $XDG_CONFIG_HOME/scripts/wifi_menu_right_click.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/wifi_menu.sh &:}$(wifi)%{A} 
-    $(vpn) 
-    $(ethernet) 
+    %{A3:bash $XDG_CONFIG_HOME/scripts/wifi_menu_right_click.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/wifi_menu.sh &:}$(wifi)%{A}
+    $(vpn)
+    $(ethernet)
     %{A3}
     $(my_uptime)
     $(clock)
-    $(exit_ob)" 
+    $(exit_ob)"
     echo -e $BAR_S
     sleep 1
 done | lemonbar -a 100 -B "#383c4a" -f "DejaVu Sans:size=9" -f 'Font Awesome 6 Free:size=10' -f 'Font Awesome 6 Brands:size=10' -f 'Font Awesome 6 Free Solid:size=10' | bash &
