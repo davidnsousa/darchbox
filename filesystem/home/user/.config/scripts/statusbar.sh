@@ -14,7 +14,7 @@ check_for_arch_updates() {
 }
 
 check_for_de_updates() {
-	test -e ~/.update_de && echo "%{A:bash $XDG_CONFIG_HOME/scripts/update_de.sh &:}%{F#e013a4} \uf021%{F-}%{A}"
+	test -e ~/.update_de && echo "%{A:bash $XDG_CONFIG_HOME/scripts/update_de.sh && bash $XDG_CONFIG_HOME/scripts/check_for_updates.sh &:}%{F#e013a4} \uf021%{F-}%{A}"
 }
 
 monitors() {

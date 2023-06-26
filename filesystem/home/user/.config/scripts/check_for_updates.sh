@@ -19,4 +19,6 @@ last_update_date=$(cat ~/.last_update_date)
 
 if [ $last_commit_date_timsetamp -gt $last_update_date ]; then
 	touch ~/.update_de
+else
+  test -e ~/.update_de && rm ~/.update_de
 fi

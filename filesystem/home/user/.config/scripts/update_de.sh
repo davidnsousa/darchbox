@@ -8,7 +8,6 @@ if ping -q -c 1 -W 1 ping.eu > /dev/null ; then
 	cp -r filesystem/home/user/. $HOME
 	cd ~
 	rm -r $HOME/.config/dlemonbox
-	rm ~/.update_de
 	bash $XDG_CONFIG_HOME/scripts/refresh.sh
 	notify-send "The desktop is up to date!"
 
