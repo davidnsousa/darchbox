@@ -7,7 +7,7 @@ system_kernel() {
 }
 
 check_for_arch_updates() {
-	test -e ~/.nupdates && $nupdates=$(cat ~/.nupdates)
+	test -e ~/.nupdates && nupdates=$(cat ~/.nupdates)
 	test -e ~/.nupdates && if [ "$nupdates" != 0 ]; then
 		echo "%{A:$TERMINAL -e yay && bash $XDG_CONFIG_HOME/scripts/check_for_updates.sh &:}%{F#06cf00} \uf021%{F-} $nupdates%{A}"
 	fi
