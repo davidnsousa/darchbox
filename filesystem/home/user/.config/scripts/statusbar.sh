@@ -1,27 +1,18 @@
 #!/bin/bash
 
-# CHECK FOR SYSTEM UPDATES
-
 echo 0 > .nupdates
-
-while true; do
-    ping -q -c 1 -W 1 ping.eu > /dev/null && yay -Qu | wc -l > ~/.nupdates
-    sleep 60
-done &
-
-# STATUS BAR FUNCS
 
 system_kernel() {
 	echo "$(uname -r)"
 }
 
-update_system() {
-	test -e ~/.nupdates && nupdates=$(cat ~/.nupdates)
-	test -e ~/.nupdates && if [ "$nupdates" != 0 ]; then
+check_for_arch_updates() {
+	test -e ~/.nupdates && if [ $(cat ~/.nupdates) != 0 ]; then
 		echo "%{A:$TERMINAL -e yay &:}%{F#06cf00} \uf021%{F-} $nupdates%{A}"
 	fi
 }
-check_for_updates() {
+
+check_for_de_updates() {
 	test -e ~/.update_de && echo "%{A:bash $XDG_CONFIG_HOME/scripts/update_de.sh &:}%{F#e013a4} \uf021%{F-}%{A}"
 }
 
@@ -185,8 +176,8 @@ ext_devices() {
 while true; do
     BAR_S="%{l}$(launchers_status_bar)
     $(monitors)
-    $(update_system)
-    $(check_for_updates)
+    $(check_for_arch_updates)
+    $(check_for_de_updates)
     $(ext_devices)
     %{r}
     %{A:$TERMINAL -e htop &:}

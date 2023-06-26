@@ -6,7 +6,11 @@ while ! ping -q -c 1 -W 1 ping.eu > /dev/null ; do
     sleep 5
 done
 
-# check for de updates
+# check for Arch linux updates and save the number of updates to file
+
+yay -Qu | wc -l > ~/.nupdates
+
+# check for desktop environment updates
 
 last_commit_date=$(curl -s https://api.github.com/repos/davidnsousa/dlemonbox/commits | jq -r '.[0].commit.committer.date')
 last_commit_date_timsetamp=$(date -d $last_commit_date +%s)
