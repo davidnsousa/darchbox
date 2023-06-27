@@ -8,6 +8,7 @@ done
 
 # check for Arch linux updates and save the number of updates to file
 
+echo 0 > ~/.nupdates
 yay -Qu | wc -l > ~/.nupdates
 
 # check for desktop environment updates

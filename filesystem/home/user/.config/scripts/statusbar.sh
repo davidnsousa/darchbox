@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo 0 > ~/.nupdates
-
 system_kernel() {
 	echo "$(uname -r)"
 }
