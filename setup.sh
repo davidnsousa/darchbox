@@ -26,7 +26,7 @@ PKGS=(
     bluez
     bluez-utils
     man-db
-    pcmanfm
+    spacefm
     arandr
     dunst
     mirage

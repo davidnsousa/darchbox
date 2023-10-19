@@ -1,4 +1,4 @@
-include "/home/david/.gtkrc-2.0.mine"
+include "$HOME/.gtkrc-2.0.mine"
 gtk-theme-name="Arc-Dark-solid"
 gtk-icon-theme-name="Arc"
 gtk-font-name="DejaVu Sans 11"

@@ -128,7 +128,7 @@
     <name>3</name>
     <name>4</name>
     </names>
-    <popupTime>875</popupTime>
+    <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
@@ -187,7 +187,7 @@
     </keybind>
    <!--kb Configuration files--><keybind key="W-c">
       <action name="Execute">
-        <command>bash -c '$EDITOR $XDG_CONFIG_HOME/openbox/* $XDG_CONFIG_HOME/scripts/* $HOME/.config/gtk-3.0/settings.ini $HOME/.gtkrc-2.0 $HOME/.bashrc $HOME/.Xresources $HOME/.xinitrc'</command>
+        <command>bash -c '$EDITOR $CONFIG_FILES_LIST'</command>
       </action>
    </keybind>
        <!--kb Set random wallpaper--><keybind key="A-w">
@@ -242,7 +242,7 @@
     </keybind>
     <!--kb Update system--><keybind key="W-u">
       <action name="Execute">
-        <command>bash -c '$TERMINAL yay'</command>
+        <command>bash -c '$TERMINAL yay; bash $XDG_CONFIG_HOME/scripts/check_for_updates.sh'</command>
       </action>
     </keybind>
    <!--kb Install optional packages--><keybind key="W-i">
@@ -285,6 +285,11 @@
         <command>bash -c '$CTRLSOUND'</command>
       </action>
 	</keybind>
+	<!--kb Calendar--><keybind key="A-c">
+      <action name="Execute">
+        <command>bash -c '$TERMINAL -e bash $XDG_CONFIG_HOME/scripts/calendar.sh'</command>
+      </action>
+    </keybind>
 	<!--kb Raise volume--><keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>pactl set-sink-volume @DEFAULT_SINK@ +0.1</command>
@@ -311,11 +316,21 @@
       </action>
     </keybind>
     <!--kb Next window--><keybind key="A-Tab">
+        <action name="NextWindow">
+            <dialog>iconselect</dialog>
+        </action>
+    </keybind>
+    <!--kb Previous window--><keybind key="A-S-Tab">
+        <action name="PreviousWindow">
+            <dialog>iconselect</dialog>
+        </action>
+    </keybind>
+    <!--kb Next window in list--><keybind key="W-Tab">
       <action name="Execute">
         <command>bash -c '$XDG_CONFIG_HOME/scripts/next_window.sh'</command>
       </action>
 	</keybind>
-    <!--kb Previous window--><keybind key="A-S-Tab">
+    <!--kb Previous window in list--><keybind key="W-S-Tab">
       <action name="Execute">
         <command>bash -c '$XDG_CONFIG_HOME/scripts/prev_window.sh'</command>
       </action>

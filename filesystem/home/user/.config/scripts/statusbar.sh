@@ -33,7 +33,15 @@ my_uptime() {
 
 load() {
 	values=$(uptime | awk -F 'load average: ' '{print $2}' | tr -d ',')
-	echo "\ue473 $values"
+	value_15min=$(uptime | awk -F 'load average: ' '{print $2}' | awk -F ', ' '{print $3}')
+	value_15min=${value_15min%.*}
+	if [ $value_15min -lt 1 ]; then
+        echo "%{F#06cf00}\ue473%{F-} $values"
+	elif [ $value_15min -ge 1 ] && [ $value_15min -lt 2 ]; then
+		echo "%{F#ffec00}\ue473%{F-} $values"
+    else
+        echo "%{F#FF0000}\ue473%{F-} $values"
+    fi
 }
 
 sound_volume() {
@@ -54,12 +62,38 @@ backlight() {
 
 mem() {
 	usage=$(free -m | awk 'NR==2{printf "%.1f%%", $3*100/$2 }')
-	echo "\uf1c0 $usage"
+	usage=${usage%.*}
+	if [ $usage -le 50 ]; then
+        echo "%{F#06cf00}\uf1c0%{F-} $usage%"
+	elif [ $usage -gt 50 ] && [ $usage -le 80 ]; then
+		echo "%{F#ffec00}\uf1c0%{F-} $usage%"
+    else
+        echo "%{F#FF0000}\uf1c0%{F-} $usage%"
+    fi
 }
 
+swap() {
+    usage=$(free -m | awk 'NR==3{printf "%.1f%%", $3*100/$2 }')
+    usage=${usage%.*}
+    if [ "$usage" -le 50 ]; then
+        echo "%{F#06cf00}\uf362%{F-} $usage%"
+    elif [ "$usage" -gt 50 ] && [ "$usage" -le 80 ]; then
+        echo "%{F#ffec00}\uf362%{F-} $usage%"
+    else
+        echo "%{F#FF0000}\uf362%{F-} $usage%"
+    fi
+}
+
+
 cpu() {
-	usage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print int(100 - $1)"%"}')
-	echo "\uf2db ~ $usage"
+    usage=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print int(100 - $1)}')
+	if [ $usage -le 50 ]; then
+        echo "%{F#06cf00}\uf2db%{F-} $usage%"
+	elif [ $usage -gt 50 ] && [ $usage -le 80 ]; then
+		echo "%{F#ffec00}\uf2db%{F-} $usage%"
+    else
+        echo "%{F#FF0000}\uf2db%{F-} $usage%"
+    fi
 }
 
 disk() {
@@ -183,9 +217,10 @@ while true; do
 	$(cpu)
 	$(load)
 	$(mem)
+	$(swap)
 	$(disk)%{A}
 	$(battery)
-    %{A:$CTRLSOUND &:}$(sound_volume)%{A}
+    %{A3:pactl set-sink-mute @DEFAULT_SINK@ toggle &:}%{A:$CTRLSOUND &:}$(sound_volume)%{A}%{A3}
     $(backlight)
     %{A3:bash $XDG_CONFIG_HOME/scripts/bluetooth_toggle.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/bluetooth_menu.sh &:}$(bluetooth)%{A}%{A3}
     %{A3:bash $XDG_CONFIG_HOME/scripts/wifi_menu_right_click.sh &:}%{A:bash $XDG_CONFIG_HOME/scripts/wifi_menu.sh &:}$(wifi)%{A}
@@ -193,8 +228,8 @@ while true; do
     $(ethernet)
     %{A3}
     $(my_uptime)
-    $(clock)
+    %{A:$TERMINAL -e  sh ~/.config/scripts/calendar.sh &:}$(clock)%{A}
     $(exit_ob)"
     echo -e $BAR_S
     sleep 1
-done | lemonbar -a 100 -B "#383c4a" -f "DejaVu Sans:size=9" -f 'Font Awesome 6 Free:size=10' -f 'Font Awesome 6 Brands:size=10' -f 'Font Awesome 6 Free Solid:size=10' | bash &
+done | lemonbar -a 100 -B $(cat $COLORS | grep -w BGCOLOR | awk '{print $2}') -f "DejaVu Sans:size=9" -f 'Font Awesome 6 Free:size=10' -f 'Font Awesome 6 Brands:size=10' -f 'Font Awesome 6 Free Solid:size=10' | bash &

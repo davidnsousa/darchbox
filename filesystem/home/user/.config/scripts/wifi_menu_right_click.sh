@@ -17,4 +17,4 @@ export -f toggle_wifi
 export -f toggle_networking
 export -f connect_disconnect_wifi
 
-echo -e "Connect/Disconnect Wi-Fi\nEnable/Disable Wi-Fi\nEnable/Disable Networking" | eval "dmenu $DMENU_ARGS -p 'Network Options:'" | xargs -I{} sh -c 'if [ "{}" = "Connect/Disconnect Wi-Fi" ]; then connect_disconnect_wifi; elif [ "{}" = "Enable/Disable Wi-Fi" ]; then toggle_wifi; elif [ "{}" = "Enable/Disable Networking" ]; then toggle_networking; fi'
+echo -e "Connect/Disconnect Wi-Fi\nEnable/Disable Wi-Fi\nEnable/Disable Networking" | eval "dmenu -nb '$(cat $COLORS | grep -w BGCOLOR | awk '{print $2}')' -nf '$(cat $COLORS | grep -w FGCOLOR | awk '{print $2}')' -sb '$(cat $COLORS | grep -w COLOR | awk '{print $2}')' -fn 'DejaVu Sans:size=9.6' -p 'Network Options:'" | xargs -I{} sh -c 'if [ "{}" = "Connect/Disconnect Wi-Fi" ]; then connect_disconnect_wifi; elif [ "{}" = "Enable/Disable Wi-Fi" ]; then toggle_wifi; elif [ "{}" = "Enable/Disable Networking" ]; then toggle_networking; fi'
