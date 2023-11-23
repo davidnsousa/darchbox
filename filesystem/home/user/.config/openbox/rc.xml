@@ -207,7 +207,7 @@
     </keybind>
    <!--kb Terminal--><keybind key="W-t">
       <action name="Execute">
-        <command>bash -c '$TERMINAL'</command>
+        <command>bash -c '$TERMINAL tmux'</command>
       </action>
     </keybind>
     <!--kb File manager--><keybind key="W-f">
@@ -290,27 +290,27 @@
         <command>bash -c '$TERMINAL -e bash $XDG_CONFIG_HOME/scripts/calendar.sh'</command>
       </action>
     </keybind>
-	<!--kb Raise volume--><keybind key="XF86AudioRaiseVolume">
+	<keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>pactl set-sink-volume @DEFAULT_SINK@ +0.1</command>
       </action>
     </keybind>
-    <!--kb Lower volume--><keybind key="XF86AudioLowerVolume">
+    <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
         <command>pactl set-sink-volume @DEFAULT_SINK@ -0.1</command>
       </action>
     </keybind>
-	<!--kb Mute--><keybind key="XF86AudioMute">
+	<keybind key="XF86AudioMute">
       <action name="Execute">
         <command>pactl set-sink-mute @DEFAULT_SINK@ toggle</command>
       </action>
      </keybind>
-	 <!--kb Increase brightness--><keybind key="XF86MonBrightnessUp">
+	 <keybind key="XF86MonBrightnessUp">
       <action name="Execute">
         <command>light -A 5</command>
       </action>
     </keybind>
-    <!--kb Decrease brightness--><keybind key="XF86MonBrightnessDown">
+    <keybind key="XF86MonBrightnessDown">
       <action name="Execute">
         <command>light -U 5</command>
       </action>

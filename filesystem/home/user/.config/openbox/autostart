@@ -5,3 +5,5 @@ dunst &
 bash $XDG_CONFIG_HOME/scripts/statusbar.sh &
 bash $XDG_CONFIG_HOME/scripts/taskbar.sh &
 bash $XDG_CONFIG_HOME/scripts/check_for_updates.sh &
+# To activate cloud syncing on login configure $XDG_CONFIG_HOME/scripts/cloud_sync_conf and uncomment the line bellow 
+#bash $XDG_CONFIG_HOME/scripts/cloud_sync.sh > logs/cloud_sync_log &

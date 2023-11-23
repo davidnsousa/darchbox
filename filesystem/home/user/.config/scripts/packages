@@ -1,13 +1,15 @@
 gparted
 wget
+zip
+unzip
 gnome-keyring
 neofetch
 catfish
 bitwarden
 keepass
 gigolo
+filezilla
 baobab
-base-devel
 nano
 vim
 emacs
@@ -15,7 +17,7 @@ mousepad
 leafpad
 atril
 pdftk
-xournalapp
+xournalpp
 meld
 zeal
 octave
@@ -57,7 +59,7 @@ tigervnc
 virtualbox
 virtualbox-host-modules-arch
 virtualbox-host-modules-dkms
-mullvad-vpn-bin
+mullvad-vpn-cli
 rpi-imager-bin
 obconf
 lxappearance

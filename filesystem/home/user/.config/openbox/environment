@@ -18,11 +18,11 @@ export HDMI=$(xrandr | grep HDMI | awk '{print $1}')
 
 export EDITOR='geany -i'
 export TERMINAL=xterm
-export FILEMANAGER=spacefm
+export FILEMANAGER='spacefm -r'
 export CTRLSOUND='xterm -e pulsemixer'
 export CTRLDISPLAYS=arandr
 export IMGVIEWER=mirage
 
 export COLORS=$XDG_CONFIG_HOME/scripts/colors
 
-export CONFIG_FILES_LIST="$XDG_CONFIG_HOME/openbox/* $XDG_CONFIG_HOME/scripts/* $HOME/.config/gtk-3.0/settings.ini $HOME/.gtkrc-2.0 $HOME/.bashrc $HOME/.Xresources $HOME/.xinitrc"
+export CONFIG_FILES_LIST="$XDG_CONFIG_HOME/openbox/* $XDG_CONFIG_HOME/scripts/* $HOME/.config/gtk-3.0/settings.ini $HOME/.gtkrc-2.0 $HOME/.bashrc $HOME/.Xresources $HOME/.xinitrc $HOME/.tmux.conf"

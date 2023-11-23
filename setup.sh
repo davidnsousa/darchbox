@@ -6,15 +6,21 @@ dlemonbox_dir=$(pwd)
 # PKGS FOR DE
 
 PKGS=(
+    base-devel
     xorg-server
     xorg-xinit
     xorg-xkill
     xorg-xev
     xdg-utils
     xterm
+    tmux
     xcompmgr
     gvfs
     udiskie
+    inotify-tools
+    rsync
+    sshfs
+    fuse2
     htop
     pulsemixer
     networkmanager
@@ -26,7 +32,6 @@ PKGS=(
     bluez
     bluez-utils
     man-db
-    spacefm
     arandr
     dunst
     mirage
@@ -47,6 +52,7 @@ PKGS=(
     jq
     surf
     neofetch
+    spacefm
 )
 
 # INSTALL yay
@@ -88,6 +94,10 @@ sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
 
 cd $HOME
 git clone https://github.com/davidnsousa/wallpapers
+
+# create a logs folder at home
+
+mkdir $HOME/logs
 
 # take note of installation date to compare with commit dates and notify updates
 

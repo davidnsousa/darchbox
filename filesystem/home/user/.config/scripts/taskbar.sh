@@ -1,21 +1,24 @@
 #!/bin/bash
 
+BGCOLOR=$(cat $COLORS | grep -w BGCOLOR | awk '{print $2}')
+BGCOLOR2=$(cat $COLORS | grep -w BGCOLOR2 | awk '{print $2}')
+
 chosen_icon() {
 	window=$(wmctrl -lx | grep $1)
 	if echo "$window" | grep -qE "xterm"; then
-        echo "\uf2d0"
-    elif echo "$window" | grep -qE "LibreWolf|firefox|mullvadbrowser"; then
-		echo "\ue007"
+        echo "%{F#000000}\uf2d0%{F-}"
+    elif echo "$window" | grep -qE "LibreWolf"; then
+		echo "%{F#0000FF}\ue007%{F-}"
+	elif echo "$window" | grep -qE "firefox"; then
+		echo "%{F#FFA500}\ue007%{F-}"
 	elif echo "$window" | grep -qE "chrome"; then
-		echo "\uf268"
-	elif echo "$window" | grep -qE "pcmanfm|spacefm"; then
-		echo "\uf07c"
+		echo "%{F#800080}\uf268%{F-}"
+	elif echo "$window" | grep -qE "spacefm"; then
+		echo "%{F#FFFF00}\uf07c%{F-}"
 	elif echo "$window" | grep -qE "Telegram"; then
-		echo "\uf2c6"
+		echo "%{F#1E90FF}\uf2c6%{F-}"
 	elif echo "$window" | grep -qE "zoom"; then
 		echo "\uf03d"
-	elif echo "$window" | grep -qE "MEGAsync"; then
-		echo "\u4d"
 	elif echo "$window" | grep -qE "VirtualBox"; then
 		echo "\uf49e"
 	elif echo "$window" | grep -qE "Mirage"; then
@@ -27,7 +30,7 @@ chosen_icon() {
 	elif echo "$window" | grep -qE "Geany|Pulsar"; then
 		echo "\uf1c9"
 	elif echo "$window" | grep -qE "Surf"; then
-		echo "\uf7a2"
+		echo "%{F#0000FF}\uf7a2%{F-}"
     else
         echo "\uf15b"
     fi
@@ -59,7 +62,7 @@ xev -root | grep -E --line-buffered "_NET_ACTIVE_WINDOW|CreateNotify|DestroyNoti
 			desktops+="%{B$COLOR}\x20$dID\x20%{B-}"
 		else
 			dID=$((dID+1))
-			desktops+="%{A: wmctrl -s $dID &:}\x20$dID\x20%{A}"
+			desktops+="%{B$BGCOLOR2}%{A: wmctrl -s $dID &:}\x20$dID\x20%{A}%{B-}"
 		fi
 	done
     IDS=$(wmctrl -l | awk '$2 == "'"$deskid"'"' | awk '{print $1}')
@@ -67,7 +70,7 @@ xev -root | grep -E --line-buffered "_NET_ACTIVE_WINDOW|CreateNotify|DestroyNoti
     for ID in $IDS; do
         NAME=$(wmctrl -l | grep $ID | awk '{$1=""; $2=""; $3=""; sub(/^ */, ""); title=$0; if(length(title)>10) title=substr(title, 1, 10) " ..."; print title}')
         ICON=$(chosen_icon $ID)
-        BAR_INPUT+="%{A: wmctrl -i -a $ID &:}%{A3: wmctrl -i -c $ID &:}$(button_state $ID "$NAME" "$ICON")%{A}%{A3}"
+        BAR_INPUT+="%{B$BGCOLOR2}%{A: wmctrl -i -a $ID &:}%{A3: wmctrl -i -c $ID &:}$(button_state $ID "$NAME" "$ICON")%{A}%{A3}%{B-}"
     done
     echo -e $BAR_INPUT
-done | lemonbar -a 100 -b -B $(cat $COLORS | grep -w BGCOLOR | awk '{print $2}') -f "DejaVu Sans:size=9" -f 'Font Awesome 6 Free:size=10' -f 'Font Awesome 6 Brands:size=10' -f 'Font Awesome 6 Free Solid:size=10' | bash &
+done | lemonbar -a 100 -b -B $BGCOLOR -f "DejaVu Sans:size=9" -f 'Font Awesome 6 Free:size=10' -f 'Font Awesome 6 Brands:size=10' -f 'Font Awesome 6 Free Solid:size=10' | bash > logs/taskbar_log &
