@@ -1,4 +1,5 @@
 ! xterm appearance and behavior
+Xft.dpi: 192
 xterm*font: xft:DejaVu Sans Mono:size=10
 xterm*background: #1d2021
 xterm*foreground: #ffffff
