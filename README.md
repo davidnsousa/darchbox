@@ -2,16 +2,16 @@
 
 darchbox installs the Pacman wrapper and AUR helper yay, updates the system, and sets up a basic desktop environment including openbox, dmenu and lemonbar.
 
-[setup.sh](setup.sh) describes the installation procedure and the software included. 300Mb RAM. All main DE features can be controlled with the key bindings (Ctrl+k lists the key bindings) and from the statusbar and taskbar with left and/or right clicks on the icons. Mounted external devices (including HDMI) are shown and can be accessed from the statusbar. The [configuration files](filesystem/home/user/) located in ~ and downstream control the entire DE.
+[setup.sh](setup.sh) describes the installation procedure and the software included. All main DE features can be controlled with the key bindings (Super+k lists the key bindings) and from the statusbar and taskbar with left and/or right clicks on the icons. Mounted external devices are shown and can be accessed from the statusbar. The [configuration files](filesystem/home/user/) located in ~ and downstream control the entire DE.
 
 ### Usage
 
 Requires Arch linux.
 
 ```
-git clone --depth 1 https://github.com/davidnsousa/dlemonbox
-cd dlemonbox
+git clone --depth 1 https://github.com/davidnsousa/darchbox
+cd darchbox
 bash setup.sh
 ```
 
-![alt text](https://imgur.com/n6DJVWZ.png "dlemonbox desktop")
+![alt text](https://imgur.com/a/eYTpw9P "dlemonbox desktop")

@@ -1,9 +1,8 @@
 udiskie --no-notify &
-bash $XDG_CONFIG_HOME/scripts/set_wallpaper.sh &
 xcompmgr &
-dunst &
-bash $XDG_CONFIG_HOME/scripts/statusbar.sh &
-bash $XDG_CONFIG_HOME/scripts/taskbar.sh &
-bash $XDG_CONFIG_HOME/scripts/check_for_updates.sh &
-# To activate cloud syncing on login configure $XDG_CONFIG_HOME/scripts/cloud_sync_conf and uncomment the line bellow 
-#bash $XDG_CONFIG_HOME/scripts/cloud_sync.sh > logs/cloud_sync_log &
+clipmenud &
+ef_set_wallpaper &
+ef_statusbar_taskbar &
+ef_check_for_updates &
+# To activate cloud syncing on login configure $XDG_CONFIG_HOME/darchbox/configs and uncomment the line bellow 
+# ef_cloud_sync &

@@ -1,0 +1,116 @@
+# applications
+TASKMAN ef_terminal btop
+EDITOR geany -i
+FILEMANAGER ef_one_instance doublecmd
+CTRLSOUND pavucontrol
+CTRLDISPLAYS arandr
+CALENDAR ef_terminal ef_calendar
+SCREENSHOT flameshot gui
+IMGVIEWER mirage
+##
+
+# cloud sync configurations
+sshserver my@server.com
+remote_mount_point /
+local_mount_point /mnt/server
+sync_source_dir /home/my/source/dir
+sync_target_dir /mnt/server/my/target/dir
+##
+
+# taskbar icons
+xterm \uf2d0 #000000
+Zoom \uf03d #FFFFFF
+LibreWolf \ue007 #0000FF
+firefox \ue007 #FFA500
+chrome \uf268 #800080
+brave \uf268 #FFA500
+doublecmd \uf07c #FFFF00
+Telegram \uf2c6 #1E90FF
+VirtualBox \uf49e #FFFFFF
+Mirage \uf03e #FFFFFF
+Gimp \uf1fc #FFFFFF
+Inkscape \uf1fc #FFFFFF
+vlc \ue131 #FFFFFF
+Geany \uf1c9 #FFFFFF
+Pulsar \uf1c9 #FFFFFF
+Arduino \uf534 #1E90FF
+Zotero \u5a #A90000
+Surf \uf7a2 #0000FF
+impress \uf1c4 #FFFFFF
+arandr \ue163 #FFFFFF
+##
+
+# optional install packages
+gparted
+wget
+zip
+unzip
+gnome-keyring
+polkit-gnome
+neofetch
+catfish
+bitwarden
+keepass
+gigolo
+filezilla
+baobab
+nano
+vim
+mousepad
+leafpad
+atril
+pdftk
+xournalpp
+meld
+zeal
+octave
+vscodium-bin
+pulsar-bin
+rstudio-desktop-bin
+arduino-ide-bin
+pycharm-community-edition
+thonny
+qucs-s
+fritzing
+kikad
+kikad-library
+kikad-library-3d
+chromium
+google-chrome
+firefox
+librewolf-bin
+mullvad-browser-bin
+brave
+transmission-gtk
+zoom
+telegram-desktop-bin
+slack-desktop
+signal-desktop-beta-bin
+vlc
+lmms
+audacity
+gcolor2
+pinta
+gimp
+inkscape
+blender
+shotcut
+galculator
+libreoffice-fresh
+onlyoffice-bin
+zotero-bin
+timeshift
+distrobox
+docker
+tigervnc
+virtualbox
+virtualbox-host-modules-arch
+virtualbox-host-modules-dkms
+mullvad-vpn-cli
+rpi-imager-bin
+obconf
+lxappearance
+se98-icon-theme-git
+raleigh-reloaded-git
+redmond97-gtk-theme-git
+##

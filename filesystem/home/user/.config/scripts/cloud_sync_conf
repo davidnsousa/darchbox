@@ -1,5 +1,0 @@
-sshserver example@server
-remote_mount_point /
-local_mount_point /mnt/example-mount-point
-sync_source_dir /home/user/example-source
-sync_target_dir /mnt/server/home/user/example-target

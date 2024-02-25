@@ -13,7 +13,7 @@ PKGS=(
     xorg-xev
     xdg-utils
     xterm
-    tmux
+    byobu
     xcompmgr
     gvfs
     udiskie
@@ -21,8 +21,8 @@ PKGS=(
     rsync
     sshfs
     fuse2
-    htop
-    pulsemixer
+    btop
+    pavucontrol
     networkmanager
     light
     openbox-arc-git
@@ -36,9 +36,7 @@ PKGS=(
     dunst
     mirage
     geany
-    xarchiver
     xf86-input-synaptics
-    scrot
     ttf-font-awesome
     lemonbar-xft-git
     wmctrl
@@ -48,11 +46,11 @@ PKGS=(
     dialog
     libnotify
     slock
-    curl
-    jq
     surf
     neofetch
-    spacefm
+    doublecmd-gtk2
+    flameshot
+    clipmenu
 )
 
 # INSTALL yay
@@ -94,13 +92,5 @@ sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
 
 cd $HOME
 git clone https://github.com/davidnsousa/wallpapers
-
-# create a logs folder at home
-
-mkdir $HOME/logs
-
-# take note of installation date to compare with commit dates and notify updates
-
-echo $(date +%s) > ~/.last_update_date
 
 echo "Finished! Reboot."
