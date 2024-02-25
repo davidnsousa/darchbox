@@ -14,4 +14,4 @@ cd darchbox
 bash setup.sh
 ```
 
-![alt text](https://imgur.com/a/eYTpw9P "dlemonbox desktop")
+![alt text](https://i.imgur.com/74sATEw.png "darchbox desktop")
