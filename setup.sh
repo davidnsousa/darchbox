@@ -34,13 +34,12 @@ PKGS=(
     man-db
     arandr
     dunst
-    mirage
-    geany
+    tint2
+    rofi
     xf86-input-synaptics
     ttf-font-awesome
     lemonbar-xft-git
     wmctrl
-    dmenu
     pactl
     feh
     dialog
@@ -48,9 +47,11 @@ PKGS=(
     slock
     surf
     neofetch
-    doublecmd-gtk2
+    spacefm
+    xarchiver
     flameshot
-    clipmenu
+    mirage
+    geany
 )
 
 # INSTALL yay

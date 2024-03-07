@@ -1,8 +1,8 @@
 udiskie --no-notify &
 xcompmgr &
-clipmenud &
+tint2 &
+ef_statusbar &
 ef_set_wallpaper &
-ef_statusbar_taskbar &
 ef_check_for_updates &
-# To activate cloud syncing on login configure $XDG_CONFIG_HOME/darchbox/configs and uncomment the line bellow 
+# To activate cloud syncing on login configure $XDG_CONFIG_HOME/darchbox/configs and uncomment the line bellow
 # ef_cloud_sync &

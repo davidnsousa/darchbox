@@ -248,11 +248,6 @@
         <command>bash -c 'ef_bluetooth_menu'</command>
       </action>
     </keybind>
-	<!--kb Wifi menu--><keybind key="W-w">
-      <action name="Execute">
-        <command>bash -c 'ef_wifi_menu'</command>
-      </action>
-    </keybind>
 	<!--kb Network menu--><keybind key="W-n">
       <action name="Execute">
         <command>bash -c 'ef_network_menu'</command>
