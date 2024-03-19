@@ -13,8 +13,6 @@ IMGVIEWER mirage
 sshserver my@server.com
 remote_mount_point /
 local_mount_point /mnt/server
-sync_source_dir /home/my/source/dir
-sync_target_dir /mnt/server/my/target/dir
 ##
 
 # optional install packages

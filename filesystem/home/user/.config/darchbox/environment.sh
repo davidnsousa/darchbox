@@ -48,7 +48,7 @@ while read -r app; do
 		flag=false
 	fi
 	if $flag; then
-
+		
 		app_name=$(echo "$app" | awk '{print $1}')
 		eval "$app_name() {
 		  app_cmd=\$(cat \$XDG_CONFIG_HOME/darchbox/configs | grep $app_name | awk '{print substr(\$0, index(\$0,\$2))}')
@@ -59,7 +59,7 @@ while read -r app; do
 	fi
 done < $XDG_CONFIG_HOME/darchbox/configs
 
-
+		
 # FUNCTIONS
 
 ef_terminal() {
@@ -93,7 +93,7 @@ ef_one_instance() {
 export -f ef_one_instance
 
 ef_arch_docs() {
-
+	
 	search_term=$(curl -sS "https://wiki.archlinux.org/title/Table_of_contents" | grep -o '<a href="/title/Category:[^>]*>[^<]*</a>' | sed 's/<[^>]*>//g' | rofi_hmenu)
 
 	if [ -n "$search_term" ]; then
@@ -127,7 +127,7 @@ ef_bluetooth_toggle() {
 export -f ef_bluetooth_toggle
 
 ef_calendar() {
-
+	
 	date=$(dialog --stdout \
 	  --title "Calendar" \
 	  --ok-label "Copy" \
@@ -144,10 +144,6 @@ export -f ef_calendar
 
 ef_check_for_updates() {
 
-	while ! ping -q -c 1 -W 1 ping.eu > /dev/null ; do
-		sleep 5
-	done
-
 	echo 0 > ~/.nupdates
 	yay -Qu | wc -l > ~/.nupdates
 
@@ -156,16 +152,16 @@ ef_check_for_updates() {
 export -f ef_check_for_updates
 
 ef_update_arch() {
-
+	
 	ef_terminal yay
-	ef_check_for_updates
-
+	ef_check_for_updates 
+	
 }
 
 export -f ef_update_arch
 
 ef_exit_menu() {
-
+	
 	option0="Lock"
 	option1="Leave X"
 	option2="Reboot"
@@ -190,9 +186,9 @@ esac
 export -f ef_exit_menu
 
 ef_install_packages() {
-
+	
 	flag=false
-
+	
 	PKGS=()
 	while read -r line; do
 		if [[ "$line" == "# optional install packages" ]]; then
@@ -224,7 +220,7 @@ ef_keybindings() {
 	key_coment_command=$(awk -F'[<>"]+' '/<!--kb/ {comment=substr($2, 6); gsub(/-+$/, "", comment)} /<keybind/ {if (comment) {key=$4}} /<command>/ {command=$3} /<\/command>/ {gsub(/^\s+|\s+$/, "", command); if (comment) {print "(" key ") " comment " : " command; comment=""}}' "$CONFIG_FILE")
 	selected_key=$(echo "$key_coment" | rofi_vmenu)
 	if [ -n "$selected_key" ]; then
-		sleep 0.5
+		sleep 0.1
 		command=$(echo "$key_coment_command" | grep "$selected_key" | awk -F':' '{print $2}')
 		eval "$command"
 	fi
@@ -234,7 +230,7 @@ ef_keybindings() {
 export -f ef_keybindings
 
 ef_launch_apps() {
-
+	
 	rofi_drun
 
 }
@@ -242,18 +238,18 @@ ef_launch_apps() {
 export -f ef_launch_apps
 
 ef_refresh() {
-
+	
 	openbox --reconfigure
 	killall -SIGUSR2 lemonbar
 	sleep 0.1
 	ef_statusbar
-
+	
 }
 
 export -f ef_refresh
 
 ef_search_home() {
-
+	
 	options="$(find $HOME -type f -printf '%f\n')"
 	chosen="$(echo -e "$options" | rofi_hmenu)"
 	xdg-open "$(find $HOME -type f -name "$chosen" -print -quit)"
@@ -263,19 +259,19 @@ ef_search_home() {
 export -f ef_search_home
 
 ef_set_wallpaper() {
-
+	
 	list_files=$(ls ~/wallpapers)
 	random_file=$(echo $list_files | tr " " "\n" | shuf -n 1)
 	feh --bg-fill ~/wallpapers/$random_file
-
+	
 }
 
 export -f ef_set_wallpaper
 
 ef_network_menu() {
-
+    
     wifi_menu() {
-
+	
 		selected=$(nmcli -t -f ssid dev wifi | grep -E -v '^$' | rofi_hmenu)
 
 		if [[ -n "$selected" ]]; then
@@ -286,9 +282,9 @@ ef_network_menu() {
 				nmcli device wifi connect "$selected"
 			fi
 		fi
-
+	
 	}
-
+    
     connect_disconnect_wifi() {
         nmcli device | grep wifi | awk '{print $3}' | grep -w connected && nmcli device disconnect $WIFIDEVICE || nmcli device connect $WIFIDEVICE
     }
@@ -325,53 +321,38 @@ ef_network_menu() {
 
 export -f ef_network_menu
 
-ef_cloud_sync() {
+function ef_eval_string_after_network() {
+	
+    target="$1"
+    interval="$2"
+    
+    while ! ping -q -c 1 -W 1 "$target" > /dev/null; do
+        sleep "$interval"
+    done
+    
+    shift 2
+    eval "$@"
+    
+}
 
+export -f ef_eval_string_after_network
+
+ef_cloud_connect() {
+	
 	sshserver=$(cat $XDG_CONFIG_HOME/darchbox/configs | grep -w sshserver | awk '{print $2}')
 	remote_mount_point=$(cat $XDG_CONFIG_HOME/darchbox/configs | grep -w remote_mount_point | awk '{print $2}')
 	local_mount_point=$(cat $XDG_CONFIG_HOME/darchbox/configs | grep -w local_mount_point | awk '{print $2}')
-	sync_source_dir=$(cat $XDG_CONFIG_HOME/darchbox/configs | grep -w sync_source_dir | awk '{print $2}')
-	sync_target_dir=$(cat $XDG_CONFIG_HOME/darchbox/configs | grep -w sync_target_dir | awk '{print $2}')
-
-	sync() {
-		if ps -e | grep -q sshfs; then
-			rsync -avz --delete $sync_source_dir $sync_target_dir
-			notify-send "Cloud sync event $( echo $out | awk '{print $2 , $3}')"
-		fi
-	}
-
-	check_connection() {
-		while ! ping -q -c 1 -W 1 ping.eu > /dev/null ; do
-			sleep 5
-		done
-	}
-
-	monitor_and_sync() {
-		while out=$(inotifywait -r -e modify,create,delete,move $sync_source_dir); do
-			sync
-		done
-	}
-
-	check_connection
 
 	sshfs -o reconnect $sshserver:$remote_mount_point $local_mount_point
 
-	sync
-
-	# the loop bellow re-runs inotify whenever it stops runing, for instance when a folder is deleted (inotify stops because it is watching directories recursively
-
-	while true; do
-		monitor_and_sync
-	done
-
 }
 
-export -f ef_cloud_sync
+export -f ef_cloud_connect
 
 ef_ssh_cloud() {
-
+	
 	ef_terminal "ssh $(cat $XDG_CONFIG_HOME/darchbox/configs | grep -w sshserver | awk '{print $2}')"
-
+	
 }
 
 export -f ef_ssh_cloud
@@ -392,7 +373,7 @@ ef_statusbar() {
 	green="%{F#06cf00}"
 	orange="%{F#FFA500}"
 	reset_color="%{F-}"
-
+	
 	sbar_menu() {
 		echo "%{A:ef_keybindings :}\uf0c9 %{A}"
 	}
@@ -403,7 +384,7 @@ ef_statusbar() {
 		test -e ~/.nupdates && if [ "$nupdates" != 0 ]; then
 			out="$green$update_icon$reset_color $nupdates"
 		fi
-
+		
 		echo "%{A:ef_update_arch &:}$out %{A}"
 	}
 
@@ -468,7 +449,7 @@ ef_statusbar() {
 		battery_full_icon="\uf240"
 		charging_icon="\uf0e7"
 		plug_icon="\uf1e6"
-
+		
 		capacity=$(cat $BATDEVICE/capacity)
 		status=$(cat $BATDEVICE/status)
 		if [ $capacity -lt 10 ] &&  [ $status = 'Discharging' ]; then

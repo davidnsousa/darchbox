@@ -273,11 +273,11 @@
         <command>bash -c 'CTRLSOUND'</command>
       </action>
 	</keybind>
-	<!--kb Clipboard menu--><keybind key="A-c">
+	<!--kb Calendar--><keybind key="A-c">
       <action name="Execute">
-        <command>bash -c 'clipmenu'</command>
+        <command>bash -c 'CALENDAR'</command>
       </action>
-    </keybind>
+	</keybind>
 	<keybind key="XF86Calculator">
       <action name="Execute">
         <command>galculator</command>
