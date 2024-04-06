@@ -30,9 +30,10 @@ gigolo
 filezilla
 baobab
 nano
-vim
+nvim
 mousepad
 leafpad
+notable-bin
 atril
 pdftk
 xournalpp

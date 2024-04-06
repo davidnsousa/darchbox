@@ -31,7 +31,7 @@ rofi_hmenu(){
 export -f rofi_hmenu
 
 rofi_vmenu(){
-	rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary
+	rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines
 }
 
 export -f rofi_vmenu

@@ -3,5 +3,5 @@ xcompmgr &
 tint2 &
 ef_statusbar &
 ef_set_wallpaper &
-# To activate cloud syncing on login configure $XDG_CONFIG_HOME/darchbox/configs and add "ef_cloud_connect" to the input string bellow
+# To connect to your cloud on login configure $XDG_CONFIG_HOME/darchbox/configs and add "ef_cloud_connect" to the input string bellow
 ef_eval_string_after_network ping.eu 5 "ef_check_for_updates && notify-send 'net services on' " &
