@@ -14,11 +14,10 @@ PKGS=(
     xdg-utils
     xterm
     byobu
-    xcompmgr
+    picom
     gvfs
     udiskie
     inotify-tools
-    rsync
     sshfs
     fuse2
     btop
@@ -34,24 +33,23 @@ PKGS=(
     man-db
     arandr
     dunst
-    tint2
     rofi
     xf86-input-synaptics
-    ttf-font-awesome
-    lemonbar-xft-git
+    polybar
     wmctrl
     pactl
     feh
     dialog
     libnotify
     slock
-    surf
     neofetch
     spacefm
     xarchiver
     flameshot
     mirage
     geany
+    nano
+    vimix-cursors
 )
 
 # INSTALL yay

@@ -1,10 +1,9 @@
-eh! xterm appearance and behavior
 Xft.dpi: 192
 xterm*faceName: DejaVuSansMono
 xterm*faceSize: 10
-xterm*background: #1d2021
-xterm*foreground: #ffffff
-xterm*highlightColor: #5f5f5f
+Xcursor.size: 48
+xterm*background: #404552
+xterm*foreground: #C5C8C6
 xterm*highlightSelection: true
 xterm*selectToClipboard: true
 xterm*VT100.Translations: #override \

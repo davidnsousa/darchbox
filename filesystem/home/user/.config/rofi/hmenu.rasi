@@ -1,8 +1,8 @@
 * {
     background-color:      #272930;
     border-color:          White;
-    text-color:           White;
-    font:            "DejaVu Sans 18";
+    text-color:           #C5C8C6;
+    font:            "DejaVu Mono 16";
 }
 prompt {
 	enabled: false;

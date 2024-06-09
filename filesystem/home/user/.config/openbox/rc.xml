@@ -41,7 +41,7 @@
   </placement>
   <theme>
     <name>Arc-Dark</name>
-    <titleLayout>NLIMC</titleLayout>
+    <titleLayout>IMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -54,60 +54,6 @@
   -->
     <keepBorder>yes</keepBorder>
     <animateIconify>no</animateIconify>
-    <font place="ActiveWindow">
-      <name>sans</name>
-      <size>8</size>
-      <!-- font size in points -->
-      <weight>bold</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
-      <!-- 'italic' or 'normal' -->
-    </font>
-    <font place="InactiveWindow">
-      <name>sans</name>
-      <size>8</size>
-      <!-- font size in points -->
-      <weight>bold</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
-      <!-- 'italic' or 'normal' -->
-    </font>
-    <font place="MenuHeader">
-      <name>sans</name>
-      <size>9</size>
-      <!-- font size in points -->
-      <weight>normal</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
-      <!-- 'italic' or 'normal' -->
-    </font>
-    <font place="MenuItem">
-      <name>sans</name>
-      <size>9</size>
-      <!-- font size in points -->
-      <weight>normal</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
-      <!-- 'italic' or 'normal' -->
-    </font>
-    <font place="ActiveOnScreenDisplay">
-      <name>sans</name>
-      <size>9</size>
-      <!-- font size in points -->
-      <weight>bold</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
-      <!-- 'italic' or 'normal' -->
-    </font>
-    <font place="InactiveOnScreenDisplay">
-      <name>sans</name>
-      <size>9</size>
-      <!-- font size in points -->
-      <weight>bold</weight>
-      <!-- 'bold' or 'normal' -->
-      <slant>normal</slant>
-      <!-- 'italic' or 'normal' -->
-    </font>
   </theme>
   <desktops>
     <!-- this stuff is only used at startup, pagers allow you to change them
@@ -180,107 +126,97 @@
    <!-- Keybindings for running applications -->
    	<!--kb Show Keybindings--><keybind key="W-k">
       <action name="Execute">
-        <command>bash -c 'ef_keybindings'</command>
+        <command>bash -c 'darchbox --keybindings'</command>
       </action>
     </keybind>
    <!--kb Configuration files--><keybind key="W-c">
       <action name="Execute">
-        <command>bash -c 'EDITOR $CONFIG_FILES_LIST'</command>
+        <command>bash -c 'darchbox --configs'</command>
       </action>
    </keybind>
        <!--kb Set random wallpaper--><keybind key="A-w">
       <action name="Execute">
-        <command>bash -c 'ef_set_wallpaper'</command>
+        <command>bash -c 'darchbox --wallpaper'</command>
       </action>
     </keybind>
     <!--kb Reconfigure openbox--><keybind key="W-r">
       <action name="Execute">
-        <command>bash -c 'ef_refresh'</command>
+        <command>bash -c 'darchbox --refresh'</command>
       </action>
     </keybind>
    	<!--kb Application launcher--><keybind key="W-x">
       <action name="Execute">
-        <command>bash -c 'ef_launch_apps'</command>
+        <command>bash -c 'darchbox --launcher'</command>
       </action>
     </keybind>
    <!--kb Terminal--><keybind key="W-t">
 	   <action name="Execute">
-        <command>bash -c 'ef_terminal'</command>
+        <command>bash -c 'darchbox --terminal'</command>
       </action>
     </keybind>
     <!--kb File manager--><keybind key="W-f">
       <action name="Execute">
-        <command>bash -c 'FILEMANAGER'</command>
+        <command>bash -c 'darchbox --filemanager'</command>
       </action>
     </keybind>
 	<!--kb Editor--><keybind key="A-e">
       <action name="Execute">
-        <command>bash -c 'EDITOR'</command>
+        <command>bash -c 'darchbox --editor'</command>
       </action>
     </keybind>
     <!--kb Displays --><keybind key="W-p">
       <action name="Execute">
-        <command>bash -c 'CTRLDISPLAYS'</command>
+        <command>bash -c 'darchbox --displays'</command>
       </action>
     </keybind>
 	<!--kb Resource monitor--><keybind key="W-m">
       <action name="Execute">
-        <command>bash -c 'TASKMAN'</command>
+        <command>bash -c 'darchbox --taskmanager'</command>
       </action>
     </keybind>
     <!--kb Screenshot--><keybind key="W-S-s">
       <action name="Execute">
-        <command>bash -c 'SCREENSHOT'</command>
+        <command>bash -c 'darchbox --screenshot'</command>
       </action>
     </keybind>
     <!--kb Update system--><keybind key="W-u">
       <action name="Execute">
-        <command>bash -c 'ef_update_arch'</command>
+        <command>bash -c 'darchbox --updatearch'</command>
       </action>
     </keybind>
    <!--kb Install optional packages--><keybind key="W-i">
       <action name="Execute">
-        <command>bash -c 'ef_terminal ef_install_packages'</command>
+        <command>bash -c 'darchbox --installpackages'</command>
       </action>
     </keybind>
     <!--kb Bluetooth menu--><keybind key="W-b">
       <action name="Execute">
-        <command>bash -c 'ef_bluetooth_menu'</command>
+        <command>bash -c 'darchbox --bluetooth'</command>
       </action>
     </keybind>
 	<!--kb Network menu--><keybind key="W-n">
       <action name="Execute">
-        <command>bash -c 'ef_network_menu'</command>
+        <command>bash -c 'darchbox --network'</command>
       </action>
     </keybind>
 	<!--kb Search ~--><keybind key="W-s">
       <action name="Execute">
-        <command>bash -c 'ef_search_home'</command>
+        <command>bash -c 'darchbox --search'</command>
       </action>
     </keybind>
    <!--kb Exit menu--><keybind key="W-e">
       <action name="Execute">
-        <command>bash -c 'ef_exit_menu'</command>
-      </action>
-    </keybind>
-       <!--kb Search Arch linux docs--><keybind key="A-d">
-      <action name="Execute">
-        <command>bash -c 'ef_arch_docs'</command>
+        <command>bash -c 'darchbox --exit'</command>
       </action>
     </keybind>
     <!--kb Sound controls--><keybind key="W-a">
       <action name="Execute">
-        <command>bash -c 'CTRLSOUND'</command>
-      </action>
-	</keybind>
-	<!--kb Calendar--><keybind key="A-c">
-      <action name="Execute">
-        <command>bash -c 'CALENDAR'</command>
+        <command>bash -c 'darchbox --soundcontrol'</command>
       </action>
 	</keybind>
 	<keybind key="XF86Calculator">
       <action name="Execute">
-        <command>galculator</command>
+        <command>bash -c 'darchbox --calculator'</command>
       </action>
     </keybind>
 	<keybind key="XF86AudioRaiseVolume">
@@ -309,16 +245,24 @@
       </action>
     </keybind>
     <keybind key="A-Tab">
-		<command> </command>
+      <action name="Execute">
+        <command>bash -c 'darchbox --cyclewindows'</command>
+      </action>
+<!--
         <action name="NextWindow">
             <dialog>iconselect</dialog>
         </action>
+-->
     </keybind>
     <keybind key="A-S-Tab">
-		<command> </command>
+      <action name="Execute">
+        <command>bash -c 'darchbox --cyclewindows'</command>
+      </action>
+<!--
         <action name="PreviousWindow">
             <dialog>iconselect</dialog>
         </action>
+-->
     </keybind>
     <!--kb Lock screen--><keybind key="W-l">
       <action name="Execute">
