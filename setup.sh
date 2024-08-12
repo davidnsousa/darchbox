@@ -48,6 +48,7 @@ PKGS=(
     flameshot
     mirage
     gsimplecal
+    galculator
     geany
     nano
     rate-mirrors-bin
