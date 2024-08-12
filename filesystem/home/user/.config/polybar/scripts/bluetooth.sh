@@ -4,22 +4,26 @@ status() {
         connection=$(bluetoothctl show | grep -q "Powered: yes" && echo "On" || echo "Off")
         device=$(bluetoothctl info | grep -q "Connected: yes" && bluetoothctl info | grep -o 'Name:.*' | sed 's/Name: //')
         if [ "$device" != "" ]; then
-                echo "$device"
+                echo "%{F#2EBA3B}●%{F-} $device"
         else
-                echo "$connection"
+                if [ "$connection" = On ]; then
+                        echo "%{F#2EBA3B}●%{F-}"
+                else
+                        echo "%{F#FF0000}●%{F-}"
+                fi
         fi
 }
 
-toogle_bluetooth() {
+toggle() {
         bluetoothctl show | grep -q "Powered: yes" && bluetoothctl power off || bluetoothctl power on
 }
 
 connect() {
-        darchbox --bluetooth
+        dab -b
 }
 
 case $1 in
         "--status") status;;
-        "--toggle") toogle_bluetooth;;
+        "--toggle") toggle;;
         "--connect") connect;;
 esac

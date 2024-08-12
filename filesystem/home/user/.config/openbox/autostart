@@ -1,6 +1,1 @@
-darchbox --setupenv &
-# Uncomment and edit to connect to online services when online
-#darchbox --runafternet ping.eu 5 "
-#    sshfs -o reconnect user@server:/remote/mount/point /local/mount/point &&
-#    notify-send 'net services on'
-#    " &
+

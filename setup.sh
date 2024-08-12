@@ -38,7 +38,7 @@ PKGS=(
     polybar
     wmctrl
     pactl
-    feh
+    nitrogen
     dialog
     libnotify
     slock
@@ -47,8 +47,10 @@ PKGS=(
     xarchiver
     flameshot
     mirage
+    gsimplecal
     geany
     nano
+    rate-mirrors-bin
     vimix-cursors
 )
 

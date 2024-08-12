@@ -1,0 +1,147 @@
+#>Show Keybindings
+"dab -k"
+Mod4 + k
+
+#>Environment configuration
+"dab -c"
+Mod4 + c
+
+#>Set random wallpaper
+"dab -rw"
+Alt + w
+
+#>Refresh environment
+"dab -r"
+Mod4 + r
+
+#>Application launcher
+"dab -l"
+Mod4 + x
+
+#>Terminal
+"dab -t"
+Mod4 + t
+
+#>File manager
+"dab -f"
+Mod4 + f
+
+#>Editor
+"dab -e"
+Alt + e
+
+#>Displays
+"dab -d"
+Mod4 + p
+
+#>Resource monitor
+"dab -tm"
+Mod4 + m
+
+#>Update system
+"dab -u"
+Mod4 + u
+
+#>Bluetooth menu
+"dab -b"
+Mod4 + b
+
+#>Network menu
+"dab -n"
+Mod4 + n
+
+#>Wifi menu
+"dab -w"
+Mod4 + w
+
+#>Search
+"dab -s"
+Mod4 + s
+
+#>Exit menu
+"dab -em"
+Mod4 + e
+
+#>Lock screen
+"dab -lck"
+Mod4 + l
+
+#>Cycle windows
+"dab -cw"
+Alt + Tab
+
+#>Cycle windows backwards
+"dab -cw"
+Alt + Shift + Tab
+
+#>Close window
+"dab -kw"
+Mod4 + q
+
+#>Show desktop
+"dab -sde"
+Mod4 + d
+
+#>Go to desktop on the left
+"dab -gld"
+Mod4 + Left
+
+#>Go to desktop on the right
+"dab -grd"
+Mod4 + Right
+
+#>Send to desktop on the left
+"dab -sld"
+Mod4 + Alt + Left
+
+#>Send to desktop on the right
+"dab -srd"
+Mod4 + Alt + Right
+
+#>Go to desktop 1
+"dab -gdn 1"
+Mod4 + 1
+
+#>Go to desktop 2
+"dab -gdn 2"
+Mod4 + 2
+
+#>Go to desktop 3
+"dab -gdn 3"
+Mod4 + 3
+
+#>Go to desktop 4
+"dab -gdn 4"
+Mod4 + 4
+
+#>Screenshot
+"dab -ss"
+Print
+
+#>Sound controls
+"dab -sc"
+Mod4 + a
+
+#>Raise sound volume
+"dab -su"
+XF86AudioRaiseVolume
+
+#>Lower sound volume
+"dab -sd"
+XF86AudioLowerVolume
+
+#>Sound mute
+"dab -sm"
+XF86AudioMute
+
+#>Brightness up
+"dab -bu"
+XF86MonBrightnessUp
+
+#>Brightness down
+"dab -bd"
+XF86MonBrightnessDown
+
+#>Calculator
+"dab -ca"
+XF86Calculator

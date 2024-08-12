@@ -3,15 +3,15 @@
 status() {
     if ps -e | grep -q sshfs; then
         servername=$(mount | grep sshfs | awk -F'[@:]' '{print $2}')
-        echo "$servername"
+        echo "%{F#2EBA3B}●%{F-} $servername"
     else
-        echo "Disconnected"
+        echo "%{F#FF0000}●%{F-}"
     fi
 }
 
 connect() {
     servername=$(mount | grep sshfs | awk -F'[@:]' '{print $2}')
-    darchbox --terminal "ssh dnsousa.com"
+    dab -t "ssh $servername"
 }
 
 case $1 in
