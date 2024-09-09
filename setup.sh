@@ -18,8 +18,6 @@ PKGS=(
     gvfs
     udiskie
     inotify-tools
-    sshfs
-    fuse2
     btop
     pavucontrol
     networkmanager

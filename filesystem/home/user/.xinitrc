@@ -32,13 +32,13 @@ xset s off
 xset -dpms
 xset s noblank
 
-dab() { 
+dab() {
     ~/.config/darchbox/darchbox.sh $@
 };
 
 export -f dab
 
-xbindkeys & 
+xbindkeys &
 udiskie --no-notify &
 picom &
 if [ "$(grep 'random_wallpaper_on_startup' ~/.config/darchbox/settings | sed 's/^[^ ]* //')" == "true" ]; then
@@ -48,12 +48,6 @@ else
 fi &
 if [ "$(grep 'vpn_autostart' ~/.config/darchbox/settings | sed 's/^[^ ]* //')" == "true" ]; then
         $(grep 'vpn_connect' ~/.config/darchbox/settings | sed 's/^[^ ]* //')
-fi &
-if [ "$(grep 'remote_autoconnect' ~/.config/darchbox/settings | sed 's/^[^ ]* //')" == "true" ]; then
-    server=$(grep 'remote_server' ~/.config/darchbox/settings | sed 's/^[^ ]* //')
-    rmp=$(grep 'remote_mount_point' ~/.config/darchbox/settings | sed 's/^[^ ]* //')
-    lmp=$(grep 'local_mount_point' ~/.config/darchbox/settings | sed 's/^[^ ]* //')
-    dab -ran "sshfs -o reconnect $server:$rmp $lmp"
 fi &
 polybar &
 ~/.config/darchbox/autostart.sh &

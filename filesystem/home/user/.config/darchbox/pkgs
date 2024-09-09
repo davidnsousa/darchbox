@@ -60,6 +60,8 @@ timeshift
 distrobox
 docker
 tigervnc
+sshfs
+fuse2
 virtualbox
 virtualbox-host-modules-arch
 virtualbox-host-modules-dkms
