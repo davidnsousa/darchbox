@@ -65,10 +65,11 @@ fuse2
 virtualbox
 virtualbox-host-modules-arch
 virtualbox-host-modules-dkms
-mullvad-vpn-cli
+mullvad-vpn-beta-bin
 rpi-imager-bin
 obconf
 lxappearance
 se98-icon-theme-git
 raleigh-reloaded-git
 redmond97-gtk-theme-git
+megacmd
