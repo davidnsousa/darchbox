@@ -65,6 +65,7 @@ fuse2
 virtualbox
 virtualbox-host-modules-arch
 virtualbox-host-modules-dkms
+mullvad-vpn-bin
 mullvad-vpn-beta-bin
 rpi-imager-bin
 obconf
