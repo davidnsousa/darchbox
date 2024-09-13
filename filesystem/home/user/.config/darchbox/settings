@@ -7,10 +7,3 @@ random_wallpaper_on_startup true
 vpn_autostart false
 vpn_connect command
 vpn_disconnect command
-
-# Remote server settings
-
-remote_autoconnect false
-remote_server some@server.something
-remote_mount_point /remote/mount/path
-local_mount_point /local/mount/path
