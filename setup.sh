@@ -50,7 +50,7 @@ PKGS=(
     geany
     nano
     rate-mirrors-bin
-    vimix-cursors
+    xbindkeys
 )
 
 # INSTALL yay
