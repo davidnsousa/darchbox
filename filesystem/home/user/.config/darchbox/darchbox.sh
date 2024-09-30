@@ -110,11 +110,17 @@ search() {
 
 bluetooth() {
 	devices=$(bluetoothctl devices | grep "Device" | cut -f2- -d' ')
-	selection=$(echo "$devices" | rofi_hmenu)
+	selection=$(echo -e "$devices\nbluetoothctl\nToggle" | rofi_hmenu)
 
 	if [ -n "$selection" ]; then
-		mac=$(echo "$selection" | cut -f1 -d' ')
-		echo -e "connect $mac\nquit" | bluetoothctl
+                if [ "$selection" == "bluetoothctl" ]; then
+                        terminal bluetoothctl
+                elif [ "$selection" == "Toggle" ]; then
+                        bluetoothctl show | grep -q "Powered: yes" && bluetoothctl power off || bluetoothctl power on
+                else
+                        mac=$(echo "$selection" | cut -f1 -d' ')
+                        echo -e "connect $mac\nquit" | bluetoothctl
+                fi
 	fi
 }
 
