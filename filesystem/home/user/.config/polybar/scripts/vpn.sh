@@ -1,7 +1,7 @@
 #!/bin/bash
 
 get_connection_status() {
-    connection=$(nmcli connection show --active | grep -q -E "vpn|wireguard" && echo "Connected" || echo "Disconnected")
+    connection=$(nmcli connection show --active | grep -q -E "tun0|wg0" && echo "Connected" || echo "Disconnected")
     echo $connection   
 }
 
