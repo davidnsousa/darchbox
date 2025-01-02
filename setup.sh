@@ -19,7 +19,7 @@ PKGS=(
     udiskie
     inotify-tools
     btop
-    pavucontrol
+    pavucontrol-gtk2
     networkmanager
     light
     openbox-arc-git
@@ -41,7 +41,7 @@ PKGS=(
     libnotify
     slock
     neofetch
-    spacefm
+    nemo
     xarchiver
     flameshot
     mirage
@@ -51,6 +51,7 @@ PKGS=(
     nano
     rate-mirrors-bin
     xbindkeys
+    vimix-cursors
 )
 
 # INSTALL yay

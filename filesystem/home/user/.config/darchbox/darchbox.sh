@@ -16,17 +16,11 @@ BASIC_CONFIG_FILES_LIST="$XDG_CONFIG_HOME/darchbox/autostart* $XDG_CONFIG_HOME/d
 # FUNCS
 
 rofi_hmenu() {
-	rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/hmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
+	rofi -dmenu -p "$1" -theme $XDG_CONFIG_HOME/rofi/hmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
 }
 
 rofi_vmenu() {
 	rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
-}
-
-cycle_windows() {
-        if [ $(wmctrl -l | awk '{print $2}' | grep 0 | wc -l) -ge 1 ]; then
-                rofi -show window -theme ~/.config/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-cancel "Alt+Escape,Escape" -kb-accept-entry '!Alt-Tab,!Alt+Down,!Alt+ISO_Left_Tab,!Alt+Up,Return,!Alt+Alt_L' -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up' -show-icons
-        fi
 }
 
 keybindings() {
@@ -62,6 +56,7 @@ random_wallpaper() {
 }
 
 refresh() {
+        openbox --reconfigure
         xbindkeys
 	killall -SIGUSR2 polybar
 	sleep 0.1
@@ -104,13 +99,13 @@ install_packages() {
 
 search() {	
 	options="$(find $HOME -type f -printf '%f\n')"
-	chosen="$(echo -e "$options" | rofi_hmenu)"
+	chosen="$(echo -e "$options" | rofi_hmenu 'Search ~:'  )"
 	xdg-open "$(find $HOME -type f -name "$chosen" -print -quit)"
 }
 
 bluetooth() {
 	devices=$(bluetoothctl devices | grep "Device" | cut -f2- -d' ')
-	selection=$(echo -e "$devices\nbluetoothctl\nToggle" | rofi_hmenu)
+	selection=$(echo -e "$devices\nbluetoothctl\nToggle" | rofi_hmenu "Bluetooth:")
 
 	if [ -n "$selection" ]; then
                 if [ "$selection" == "bluetoothctl" ]; then
@@ -125,11 +120,11 @@ bluetooth() {
 }
 
 wifi_menu() {	
-        selected=$(nmcli -t -f ssid dev wifi | grep -E -v '^$' | rofi_hmenu)
+        selected=$(nmcli -t -f ssid dev wifi | grep -E -v '^$' | rofi_hmenu "Wi-fi:")
 
         if [[ -n "$selected" ]]; then
                 if nmcli -s -g 802-11-wireless-security.psk connection show "$selected" 2>&1 | grep -q "no such connection profile"; then
-                        password=$(echo "" | rofi_hmenu)
+                        password=$(echo "" | rofi_hmenu "Password:")
                         nmcli device wifi connect "$selected" password "$password"
                 else
                         nmcli device wifi connect "$selected"
@@ -151,7 +146,7 @@ toggle_networking() {
 }
 
 network() {
-        option=$(echo -e "Wifi connections\nConnect/Disconnect Wi-Fi\nEnable/Disable Wi-Fi\nEnable/Disable Networking" | rofi_hmenu)
+        option=$(echo -e "Wifi connections\nConnect/Disconnect Wi-Fi\nEnable/Disable Wi-Fi\nEnable/Disable Networking" | rofi_hmenu "Network:")
         if [[ -n "$option" ]]; then
                 case "$option" in
                         "Wifi connections")
@@ -178,7 +173,7 @@ exit_menu() {
 
 	options="$option0\n$option1\n$option2\n$option3"
 
-	chosen="$(echo -e "$options" | rofi_hmenu )"
+	chosen="$(echo -e "$options" | rofi_hmenu "System:" )"
 	case $chosen in
                 $option0)
                         slock;;
@@ -200,7 +195,7 @@ configurations() {
 
 	options="$option0\n$option1\n$option2\n$option3\n$option4"
 
-	chosen="$(echo -e "$options" | rofi_hmenu )"
+	chosen="$(echo -e "$options" | rofi_hmenu "Configurations:")"
 	case $chosen in
                 $option0)
                         geany -i $BASIC_CONFIG_FILES_LIST;;
@@ -244,13 +239,12 @@ case $1 in
         "-ran") run_after_network ${@:2};;
         "-se") setup_env;;
         "-c") configurations;;
-        "-cw") cycle_windows;;
         "-em") exit_menu;;
         "-lck") slock;;
                 
         "-tm") terminal btop;;
         "-e") geany -i ${@:2};;
-        "-f") spacefm -r;;
+        "-f") nemo --existing-window;;
         "-sc") pavucontrol;;
         "-d") arandr;;
         "-ss") flameshot gui;;

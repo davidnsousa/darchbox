@@ -121,6 +121,12 @@
     <!-- 'Left', 'Middle', 'Right' -->
   </dock>
   <keyboard>
+    <keybind key="A-Tab">
+      <action name="NextWindow">
+      <bar>no</bar>
+      <raise>yes</raise>
+      </action>
+    </keybind>
     <chainQuitKey>C-g</chainQuitKey>
     <keybind key="A-space">
       <action name="ShowMenu">

@@ -7,9 +7,9 @@ get_connection_status() {
 
 print_connection_status() {
     if [ "$(get_connection_status)" = "Connected" ]; then
-        echo "%{F#2EBA3B}●%{F-}"
+        echo "%{F#2EBA3B}↑%{F-}"
     else
-        echo "%{F#FF0000}●%{F-}"
+        echo "%{F#FF0000}↓%{F-}"
     fi
 }
 

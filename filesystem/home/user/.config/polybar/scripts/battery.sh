@@ -7,7 +7,7 @@ status () {
         if [ $status = 'Charging' ]; then
                 echo "%{F#FFFF00}↑%{F-} $capacity%"
         elif [ $status = 'Full' ]; then
-                echo "%{F#FFFF00}●%{F-}"
+                echo "%{F#FFFF00}-%{F-}"
         elif [ $status = 'Discharging'  ] || [ $status = 'Not Charging' ]; then
                 if [ $capacity -le 10 ]; then
                         echo "%{F#FF0000}↓ $capacity%%{F-}"

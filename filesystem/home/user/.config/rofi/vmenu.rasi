@@ -8,8 +8,8 @@ prompt {
 	enabled: false;
 }
 window {
-    anchor:     north;
-    location:   north;
+    anchor:     south;
+    location:   south;
     width:      100%;
     padding:    4px;
 
