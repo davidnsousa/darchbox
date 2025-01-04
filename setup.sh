@@ -53,6 +53,7 @@ PKGS=(
     xbindkeys
     vimix-cursors
     ufw
+    firejail
 )
 
 # INSTALL yay

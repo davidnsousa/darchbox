@@ -18,6 +18,10 @@ Mod4 + r
 "dab -l"
 Mod4 + x
 
+#>Run in a sandbox
+"dab -srun"
+Mod4 + z
+
 #>Terminal
 "dab -t"
 Mod4 + t

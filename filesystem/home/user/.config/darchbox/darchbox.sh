@@ -19,6 +19,10 @@ rofi_hmenu() {
 	rofi -dmenu -p "$1" -theme $XDG_CONFIG_HOME/rofi/hmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
 }
 
+rofi_hmenu_i() {
+	rofi -dmenu -p "$1" -theme $XDG_CONFIG_HOME/rofi/hmenu-i.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
+}
+
 rofi_vmenu() {
 	rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
 }
@@ -65,6 +69,13 @@ refresh() {
 
 launcher(){
 	rofi -show drun -theme $XDG_CONFIG_HOME/rofi/hmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary
+}
+
+sandbox(){
+        app=$(compgen -c | rofi_hmenu_i "Sandbox:")
+        if [ -n "$app" ]; then
+            firejail "$app"
+        fi
 }
 
 terminal() {
@@ -229,6 +240,7 @@ case $1 in
         "-rw") random_wallpaper;;
         "-r") refresh;;
         "-l") launcher;;
+        "-srun") sandbox;;
         "-t") terminal ${@:2};;
         "-u") terminal yay;;    
         "-b") bluetooth;;
