@@ -68,7 +68,8 @@ refresh() {
 }
 
 launcher(){
-	rofi -show drun -theme $XDG_CONFIG_HOME/rofi/hmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary
+        app=$(compgen -c | rofi_hmenu "Run:")
+        $app &
 }
 
 sandbox(){
