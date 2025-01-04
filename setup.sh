@@ -52,6 +52,7 @@ PKGS=(
     rate-mirrors-bin
     xbindkeys
     vimix-cursors
+    ufw
 )
 
 # INSTALL yay
@@ -75,10 +76,15 @@ for PKG in ${PKGS[@]}; do
     yay -S --needed --noconfirm $PKG
 done
 
-# ENABLE SERVICES
+# ENABLE NETWORK AND BLUETOOTH SERVICES
 
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable bluetooth.service
+
+# ENABLE FIREWALL
+
+sudo systemctl enable ufw.service
+sudo ufw enable
 
 # add user to group video to control backlight with program light
 
