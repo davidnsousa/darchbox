@@ -127,6 +127,12 @@
       <raise>yes</raise>
       </action>
     </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow">
+      <bar>no</bar>
+      <raise>yes</raise>
+      </action>
+    </keybind>
     <chainQuitKey>C-g</chainQuitKey>
     <keybind key="A-space">
       <action name="ShowMenu">
