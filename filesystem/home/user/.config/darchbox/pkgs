@@ -2,6 +2,7 @@ gparted
 wget
 zip
 unzip
+ansi2html
 gnome-keyring
 polkit-gnome
 neofetch
@@ -11,7 +12,7 @@ keepass
 gigolo
 filezilla
 baobab
-nano
+bleachbit
 nvim
 mousepad
 leafpad
@@ -22,6 +23,7 @@ xournalpp
 meld
 zeal
 octave
+visual-studio-code-bin
 vscodium-bin
 pulsar-bin
 rstudio-desktop-bin
@@ -57,11 +59,6 @@ libreoffice-fresh
 onlyoffice-bin
 zotero-bin
 timeshift
-distrobox
-docker
-tigervnc
-sshfs
-fuse2
 virtualbox
 virtualbox-host-modules-arch
 virtualbox-host-modules-dkms
@@ -69,7 +66,16 @@ mullvad-vpn
 rpi-imager-bin
 obconf
 lxappearance
-se98-icon-theme-git
-raleigh-reloaded-git
-redmond97-gtk-theme-git
+lxappearance-gtk3
+lxappearance-obconf
+docker
+distrobox
+tigervnc
+sshfs
+fuse2
 syncthing
+ollama
+clamav
+lynis
+aide
+
