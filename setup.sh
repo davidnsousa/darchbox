@@ -54,6 +54,7 @@ PKGS=(
     vimix-cursors
     ufw
     firejail
+    timeshift
 )
 
 # INSTALL yay
@@ -100,5 +101,9 @@ sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
 
 cd $HOME
 git clone https://github.com/davidnsousa/wallpapers
+
+# take a system snapshot
+
+sudo timeshift --create --comments "Genesis"
 
 echo "Finished! Reboot."
