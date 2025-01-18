@@ -8,8 +8,8 @@ prompt {
 	enabled: true;
 }
 window {
-    anchor:     south;
-    location:   south;
+    anchor:     north;
+    location:   north;
     width:      100%;
     padding:    4px;
     children:   [ horibox ];

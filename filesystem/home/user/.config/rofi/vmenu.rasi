@@ -5,7 +5,7 @@
     font:            "DejaVu Sans Mono 16";
 }
 prompt {
-	enabled: false;
+	enabled: true;
 }
 window {
     anchor:     north;
