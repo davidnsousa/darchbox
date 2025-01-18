@@ -2,6 +2,10 @@
 "dab -k"
 Mod4 + k
 
+#>Ai assistent
+"dab -ai"
+Mod4 + i
+
 #>Environment configuration
 "dab -c"
 Mod4 + c

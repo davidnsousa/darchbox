@@ -5,5 +5,9 @@ random_wallpaper_on_startup true
 # VPN settings
 
 vpn_autostart false
-vpn_connect command
-vpn_disconnect command
+vpn_connect command_to_connect_vpn
+vpn_disconnect command_to_disconnect_vpn
+
+# AI assistant (based on tgpt - see tgpt AI providers)
+
+ai_provider ollama

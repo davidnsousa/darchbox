@@ -10,7 +10,7 @@ WIFIDEVICE=$(nmcli device status | awk '$2=="wifi"{print $1}')
 
 # FILES
 
-CONFIG_FILES_LIST="$XDG_CONFIG_HOME/openbox/rc.xml $XDG_CONFIG_HOME/darchbox/* $HOME/.config/gtk-3.0/settings.ini $HOME/.gtkrc-2.0 $HOME/.bashrc $HOME/.Xresources $HOME/.xinitrc $HOME/.xbindkeysrc $XDG_CONFIG_HOME/polybar/* $XDG_CONFIG_HOME/polybar/scripts/* $XDG_CONFIG_HOME/rofi/* $XDG_CONFIG_HOME/dunst/*"
+CONFIG_FILES_LIST="$XDG_CONFIG_HOME/openbox/rc.xml $XDG_CONFIG_HOME/darchbox/* $HOME/.config/gtk-3.0/settings.ini $HOME/.gtkrc-2.0 $HOME/.bashrc $HOME/.Xresources $HOME/.xinitrc $HOME/.xbindkeysrc $XDG_CONFIG_HOME/polybar/* $XDG_CONFIG_HOME/polybar/scripts/* $XDG_CONFIG_HOME/rofi/* $XDG_CONFIG_HOME/dunst/* $HOME/.ai_assistant/*"
 BASIC_CONFIG_FILES_LIST="$XDG_CONFIG_HOME/darchbox/autostart* $XDG_CONFIG_HOME/darchbox/settings $HOME/.xbindkeysrc $XDG_CONFIG_HOME/polybar/*"
 
 # FUNCS
@@ -24,7 +24,7 @@ rofi_hmenu_i() {
 }
 
 rofi_vmenu() {
-	rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
+	rofi -dmenu -p "$1" -theme $XDG_CONFIG_HOME/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
 }
 
 keybindings() {
@@ -43,7 +43,7 @@ keybindings() {
             fi
         done <<< "$input"
 
-        selected_key=$(printf "$output" | rofi_vmenu) 
+        selected_key=$(printf "$output" | rofi_vmenu "Keybind:") 
         if [ -n "$selected_key" ]; then
                 sleep 0.1
                 command=$(echo "$selected_key" | awk -F"[()]" '{print $2}')
@@ -234,6 +234,36 @@ update_mirrors() {
         notify-send "Mirrors set!"
 }
 
+ai_assistant() {
+        tmpmd=$HOME/.ai_assistant/tmp.md
+        tmphtml=$HOME/.ai_assistant/tmp.html
+        chist=$HOME/.ai_assistant/chist.html
+        style=$HOME/.ai_assistant/style.html
+        script=$HOME/.ai_assistant/script.html
+        final=$HOME/.ai_assistant/final.html
+       
+        selection=$(xclip -o -selection primary)
+        prompt=$(echo -e "revise\nanswer\nelaborate\nexplain\ntranslate" | rofi_vmenu "Prompt:")
+        if [ -n "$prompt" ]; then
+                ai_provider=$(grep 'ai_provider' $HOME/.config/darchbox/settings | sed 's/^[^ ]* //')
+                ai_output=$(tgpt --provider $ai_provider -q "$prompt : $selection")
+                echo "$ai_output" > $tmpmd
+                pandoc $tmpmd -o $tmphtml
+                cat <<EOF >> $chist
+<div class="box">
+<h1>$prompt</h1>
+<p>$(date +"%A, %B %d, %Y. %H:%M:%S")</p>
+<br>
+$(cat $tmphtml)
+</div>
+EOF
+                rm  $tmpmd $tmphtml
+                cat $style $chist $script > $final
+                wmctrl -c "AI assistant"
+                yad --no-buttons --escape-ok --html --uri=$final --title "AI assistant" --center --width=1000 --height=1000 --wrap
+        fi
+}
+
 # COMMANDS
 
 case $1 in
@@ -274,4 +304,6 @@ case $1 in
         "-srd") wmctrl -r :ACTIVE: -t $((($(wmctrl -d | grep "*" | cut -d " " -f 1) + 1) % 4));; #send to right desktop
         "-gdn") wmctrl -s $(( ${@:2} - 1 ));; #go to desktop number
         "-sde") wmctrl -k on;; #show desktop
+        
+        "-ai") ai_assistant;;
 esac
