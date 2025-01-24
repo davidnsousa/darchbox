@@ -235,33 +235,13 @@ update_mirrors() {
 }
 
 ai_assistant() {
-        tmpmd=$HOME/.ai_assistant/tmp.md
-        tmphtml=$HOME/.ai_assistant/tmp.html
-        chist=$HOME/.ai_assistant/chist.html
-        style=$HOME/.ai_assistant/style.html
-        script=$HOME/.ai_assistant/script.html
-        final=$HOME/.ai_assistant/final.html
-       
+        cd ~/duck-assistant
         selection=$(xclip -o -selection primary)
-        prompt=$(echo -e "revise\nanswer\nelaborate\nexplain\ntranslate" | rofi_vmenu "Prompt:")
-        if [ -n "$prompt" ]; then
-                ai_provider=$(grep 'ai_provider' $HOME/.config/darchbox/settings | sed 's/^[^ ]* //')
-                ai_output=$(tgpt --provider $ai_provider -q "$prompt : $selection")
-                echo "$ai_output" > $tmpmd
-                pandoc $tmpmd -o $tmphtml
-                cat <<EOF >> $chist
-<div class="box">
-<h1>$prompt</h1>
-<p>$(date +"%A, %B %d, %Y. %H:%M:%S")</p>
-<br>
-$(cat $tmphtml)
-</div>
-EOF
-                rm  $tmpmd $tmphtml
-                cat $style $chist $script > $final
-                wmctrl -c "AI assistant"
-                yad --no-buttons --escape-ok --html --uri=$final --title "AI assistant" --center --width=1000 --height=1000 --wrap
-        fi
+        ai_model=$(grep 'ai_model' $HOME/.config/darchbox/settings | sed 's/^[^ ]* //')
+        prompt=$(echo -e "revise\nanswer\nelaborate\nexplain\ntranslate" | rofi_hmenu "Prompt:")
+        source bin/activate
+        python duck-assistant.py --instance "$ai_model" --prompt "$prompt : $selection"
+        xclip -selection primary /dev/null
 }
 
 # COMMANDS

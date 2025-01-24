@@ -55,10 +55,8 @@ PKGS=(
   ufw
   firejail
   timeshift
-  tgpt
   xclip
-  yad
-  pandoc
+  webkit2gtk
 )
 
 # INSTALL yay
@@ -105,6 +103,14 @@ sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
 
 cd $HOME
 git clone https://github.com/davidnsousa/wallpapers
+
+# INSTALL AI ASSISTANT
+
+git clone https://github.com/davidnsousa/duck-assistant
+cd duck-assistant
+python -m venv .
+source bin/activate
+pip install -r requirements.txt
 
 # take a system snapshot
 

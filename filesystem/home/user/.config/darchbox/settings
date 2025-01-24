@@ -8,6 +8,6 @@ vpn_autostart false
 vpn_connect command_to_connect_vpn
 vpn_disconnect command_to_disconnect_vpn
 
-# AI assistant (based on tgpt - see tgpt AI providers)
+# AI assistant (gpt, llama, claude, mistral)
 
-ai_provider ollama
+ai_model gpt
