@@ -73,6 +73,7 @@ tigervnc
 sshfs
 fuse2
 syncthing
+megacmd-bin
 ollama
 clamav
 lynis
