@@ -239,9 +239,11 @@ ai_assistant() {
         selection=$(xclip -o -selection primary)
         ai_model=$(grep 'ai_model' $HOME/.config/darchbox/settings | sed 's/^[^ ]* //')
         prompt=$(echo -e "revise\nanswer\nelaborate\nexplain\ntranslate" | rofi_vmenu "Prompt:")
-        source bin/activate
-        python duck-assistant.py --instance "$ai_model" --prompt "$prompt : $selection"
-        xclip -selection primary /dev/null
+        if [[ -n "$prompt" ]]; then
+                source bin/activate
+                python duck-assistant.py --instance "$ai_model" --prompt "$prompt : $selection"
+                xclip -selection primary /dev/null
+        fi
 }
 
 # COMMANDS
