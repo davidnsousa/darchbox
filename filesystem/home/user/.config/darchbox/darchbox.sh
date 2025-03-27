@@ -234,18 +234,6 @@ update_mirrors() {
         notify-send "Mirrors set!"
 }
 
-ai_assistant() {
-        cd ~/duck-assistant
-        selection=$(xclip -o -selection primary)
-        ai_model=$(grep 'ai_model' $HOME/.config/darchbox/settings | sed 's/^[^ ]* //')
-        prompt=$(echo -e "revise\nanswer\nelaborate\nexplain\ntranslate" | rofi_vmenu "Prompt:")
-        if [[ -n "$prompt" ]]; then
-                source bin/activate
-                python duck-assistant.py --instance "$ai_model" --prompt "$prompt : $selection"
-                xclip -selection primary /dev/null
-        fi
-}
-
 # COMMANDS
 
 case $1 in
@@ -286,6 +274,4 @@ case $1 in
         "-srd") wmctrl -r :ACTIVE: -t $((($(wmctrl -d | grep "*" | cut -d " " -f 1) + 1) % 4));; #send to right desktop
         "-gdn") wmctrl -s $(( ${@:2} - 1 ));; #go to desktop number
         "-sde") wmctrl -k on;; #show desktop
-        
-        "-ai") ai_assistant;;
 esac
