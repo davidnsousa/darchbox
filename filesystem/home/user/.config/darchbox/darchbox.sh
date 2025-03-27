@@ -10,7 +10,7 @@ WIFIDEVICE=$(nmcli device status | awk '$2=="wifi"{print $1}')
 
 # FILES
 
-CONFIG_FILES_LIST="$XDG_CONFIG_HOME/openbox/rc.xml $XDG_CONFIG_HOME/darchbox/* $HOME/.config/gtk-3.0/settings.ini $HOME/.gtkrc-2.0 $HOME/.bashrc $HOME/.Xresources $HOME/.xinitrc $HOME/.xbindkeysrc $XDG_CONFIG_HOME/polybar/* $XDG_CONFIG_HOME/polybar/scripts/* $XDG_CONFIG_HOME/rofi/* $XDG_CONFIG_HOME/dunst/* $HOME/duck-assistant/*"
+CONFIG_FILES_LIST="$XDG_CONFIG_HOME/openbox/rc.xml $XDG_CONFIG_HOME/darchbox/* $HOME/.config/gtk-3.0/settings.ini $HOME/.gtkrc-2.0 $HOME/.bashrc $HOME/.Xresources $HOME/.xinitrc $HOME/.xbindkeysrc $XDG_CONFIG_HOME/polybar/* $XDG_CONFIG_HOME/polybar/scripts/* $XDG_CONFIG_HOME/rofi/* $XDG_CONFIG_HOME/dunst/*
 BASIC_CONFIG_FILES_LIST="$XDG_CONFIG_HOME/darchbox/autostart* $XDG_CONFIG_HOME/darchbox/settings $HOME/.xbindkeysrc $XDG_CONFIG_HOME/polybar/*"
 
 # FUNCS
