@@ -54,6 +54,11 @@ PKGS=(
   ufw
   firejail
   timeshift
+  cups
+  sane
+  sane-airscan
+  ipp-usb
+  xsane
 )
 
 # INSTALL yay
@@ -77,14 +82,14 @@ for PKG in ${PKGS[@]}; do
     yay -S --needed --noconfirm $PKG
 done
 
-# ENABLE NETWORK AND BLUETOOTH SERVICES
+# ENABLE SERVICES
 
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable bluetooth.service
-
-# ENABLE FIREWALL
-
+sudo systemctl enable cups.service
 sudo systemctl enable ufw.service
+sudo systemctl enable ipp-usb.service
+
 sudo ufw enable
 
 # add user to group video to control backlight with program light
