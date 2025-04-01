@@ -91,6 +91,7 @@ sudo systemctl enable ufw.service
 sudo systemctl enable ipp-usb.service
 
 sudo ufw enable
+sudo rfkill unblock bluetooth
 
 # add user to group video to control backlight with program light
 
