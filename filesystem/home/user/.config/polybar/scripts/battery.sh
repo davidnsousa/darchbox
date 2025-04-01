@@ -11,7 +11,7 @@ status () {
 
         if [ "$status" = "Charging" ]; then
             echo "%{F#FFFF00}↑%{F-} $capacity%"
-        elif [ "$status" = "Not charging" ]; then
+        elif [ "$status" = "Not charging" ] || [ "$status" = "Full" ]; then
             echo "%{F#FFFF00}-%{F-}"
         elif [ "$status" = "Discharging" ] || [ "$status" = "Not Charging" ]; then
             if [ "$capacity" -le 10 ]; then
