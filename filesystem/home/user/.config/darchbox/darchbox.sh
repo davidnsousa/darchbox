@@ -75,7 +75,7 @@ launcher(){
 sandbox(){
         app=$(compgen -c | rofi_hmenu_i "Sandbox:")
         if [ -n "$app" ]; then
-            firejail "$app"
+            firejail --whitelist=${HOME}/Downloads "$app"
         fi
 }
 
