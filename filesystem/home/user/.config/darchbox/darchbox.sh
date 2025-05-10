@@ -262,16 +262,11 @@ case $1 in
         "-d") arandr;;
         "-ss") flameshot gui;;
         "-ca") galculator;;
-        "-su") pactl set-sink-volume @DEFAULT_SINK@ +0.1;; #sound volume up
-        "-sd") pactl set-sink-volume @DEFAULT_SINK@ -0.1;; #sound volume down
-        "-sm") pactl set-sink-mute @DEFAULT_SINK@ toggle;; #sound mute
-        "-bu") light -A 5;; #brightness up
-        "-bd") light -U 5;; #brightness down
-        "-kw") wmctrl -c :ACTIVE:;; #close window
-        "-gld") wmctrl -s $((($(wmctrl -d | grep "*" | cut -d " " -f 1) - 1) % 4));; #go to left desktop
-        "-grd") wmctrl -s $((($(wmctrl -d | grep "*" | cut -d " " -f 1) + 1) % 4));; #go to right desktop
-        "-sld") wmctrl -r :ACTIVE: -t $((($(wmctrl -d | grep "*" | cut -d " " -f 1) - 1) % 4));; #send to left desktop
-        "-srd") wmctrl -r :ACTIVE: -t $((($(wmctrl -d | grep "*" | cut -d " " -f 1) + 1) % 4));; #send to right desktop
-        "-gdn") wmctrl -s $(( ${@:2} - 1 ));; #go to desktop number
-        "-sde") wmctrl -k on;; #show desktop
+        "-su") pactl set-sink-volume @DEFAULT_SINK@ +0.1;;
+        "-sd") pactl set-sink-volume @DEFAULT_SINK@ -0.1;;
+        "-sm") pactl set-sink-mute @DEFAULT_SINK@ toggle;;
+        "-bu") light -A 5;;
+        "-bd") light -U 5;;
+        "-kw") wmctrl -c :ACTIVE:;;
+
 esac
