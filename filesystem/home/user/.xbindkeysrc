@@ -70,6 +70,14 @@ Mod4 + e
 "dab -lck"
 Mod4 + l
 
+#>Cycle Windows
+"dab -cw"
+Alt + Tab
+
+#>Cycle windows backwards
+"dab -cw"
+Alt + Shift + Tab
+
 #>Close window
 "dab -kw"
 Mod4 + q

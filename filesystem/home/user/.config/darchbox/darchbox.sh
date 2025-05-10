@@ -27,6 +27,12 @@ rofi_vmenu() {
 	rofi -dmenu -p "$1" -theme $XDG_CONFIG_HOME/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up'
 }
 
+cycle_windows() { 
+        if [ $(wmctrl -l | awk '{print $2}' | grep 0 | wc -l) -ge 1 ]; then
+                rofi -show window  -theme ~/.config/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-cancel "Alt+Escape,Escape" -kb-accept-entry '!Alt-Tab,!Alt+Down,!Alt+ISO_Left_Tab,!Alt+Up,Return,!Alt+Alt_L' -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up' -selected-row 1 -steal-focus -window-format {t} ;
+        fi
+}
+
 keybindings() {
         input=$(cat $HOME/.xbindkeysrc)
         output=""
@@ -268,5 +274,7 @@ case $1 in
         "-bu") light -A 5;;
         "-bd") light -U 5;;
         "-kw") wmctrl -c :ACTIVE:;;
+        "-sde") wmctrl -k on;;
+        "-cw") cycle_windows;;
 
 esac
