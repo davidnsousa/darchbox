@@ -1,8 +1,8 @@
-#>Show Keybindings
+#>Show Actions
 "dab -k"
 Mod4 + k
 
-#>Environment configuration
+#>Configurations
 "dab -c"
 Mod4 + c
 
@@ -77,38 +77,6 @@ Mod4 + q
 #>Show desktop
 "dab -sde"
 Mod4 + d
-
-#>Go to desktop on the left
-"dab -gld"
-Mod4 + Left
-
-#>Go to desktop on the right
-"dab -grd"
-Mod4 + Right
-
-#>Send to desktop on the left
-"dab -sld"
-Mod4 + Alt + Left
-
-#>Send to desktop on the right
-"dab -srd"
-Mod4 + Alt + Right
-
-#>Go to desktop 1
-"dab -gdn 1"
-Mod4 + 1
-
-#>Go to desktop 2
-"dab -gdn 2"
-Mod4 + 2
-
-#>Go to desktop 3
-"dab -gdn 3"
-Mod4 + 3
-
-#>Go to desktop 4
-"dab -gdn 4"
-Mod4 + 4
 
 #>Screenshot
 "dab -ss"

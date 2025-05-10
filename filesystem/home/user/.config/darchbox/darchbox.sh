@@ -43,7 +43,7 @@ keybindings() {
             fi
         done <<< "$input"
 
-        selected_key=$(printf "$output" | rofi_vmenu "Keybind:") 
+        selected_key=$(printf "$output" | rofi_vmenu "Action:") 
         if [ -n "$selected_key" ]; then
                 sleep 0.1
                 command=$(echo "$selected_key" | awk -F"[()]" '{print $2}')
