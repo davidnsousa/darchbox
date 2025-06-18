@@ -1,27 +1,30 @@
 * {
     background-color:      #272930;
-    border-color:          White;
     text-color:           #C5C8C6;
     font:            "DejaVu Sans Mono 16";
 }
 prompt {
-	enabled: true;
+	enabled: false;
 }
 window {
-    anchor:     north;
-    location:   north;
-    width:      100%;
+    anchor:     center;
+    location:   center;
+    width: 25%;
     padding:    4px;
-
+    border: 2; 
+    border-color: #5294E2;
 }
 
 listview {
     layout:     vertical;
-    lines:      28;
+    scrollbar: true;   
 }
 entry {
     expand:     false;
     width:      100%;
+}
+inputbar {
+    enabled: false;
 }
 element {
     padding: 0px 2px;
@@ -33,4 +36,12 @@ element selected {
 element-text, element-icon {
   background-color: inherit;
   text-color: inherit;
+}
+
+#scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-color: #5294E2;
+    handle-width: 8px ;
+    padding:      0;
 }

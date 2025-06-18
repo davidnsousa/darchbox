@@ -29,7 +29,7 @@ rofi_vmenu() {
 
 cycle_windows() { 
         if [ $(wmctrl -l | awk '{print $2}' | grep 0 | wc -l) -ge 1 ]; then
-                rofi -show window  -theme ~/.config/rofi/vmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-cancel "Alt+Escape,Escape" -kb-accept-entry '!Alt-Tab,!Alt+Down,!Alt+ISO_Left_Tab,!Alt+Up,Return,!Alt+Alt_L' -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up' -selected-row 1 -steal-focus -window-format {t} ;
+                rofi -show window  -theme ~/.config/rofi/hmenu.rasi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -no-fixed-num-lines -kb-cancel "Alt+Escape,Escape" -kb-accept-entry '!Alt-Tab,!Alt+Down,!Alt+ISO_Left_Tab,!Alt+Up,Return,!Alt+Alt_L' -kb-row-down 'Alt-Tab,Alt+Down,Down' -kb-row-up 'Alt+ISO_Left_Tab,Alt+Up,Up' -selected-row 1 -steal-focus -show-icons -window-format {t:15} ;
         fi
 }
 
@@ -213,7 +213,7 @@ configurations() {
 
 	options="$option0\n$option1\n$option2\n$option3\n$option4"
 
-	chosen="$(echo -e "$options" | rofi_hmenu "Configurations:")"
+	chosen="$(echo -e "$options" | rofi_vmenu "Configurations:")"
 	case $chosen in
                 $option0)
                         geany -i $BASIC_CONFIG_FILES_LIST;;

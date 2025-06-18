@@ -8,15 +8,12 @@ prompt {
 	enabled: true;
 }
 window {
-    anchor:     north;
-    location:   north;
-    width:      100%;
+    anchor:     northwest;
+    location:   northwest;
+    width:      40%;
     padding:    4px;
-    children:   [ horibox ];
-}
-horibox {
-    orientation: horizontal;
-    children:   [ prompt, entry, listview ];
+    border: 0; 
+    border-color: #5294E2;
 }
 listview {
     layout:     horizontal;
@@ -26,6 +23,9 @@ listview {
 entry {
     expand:     false;
     width:      10em;
+}
+inputbar {
+    enabled: false;
 }
 element {
     padding: 0px 2px;
