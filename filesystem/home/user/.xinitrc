@@ -50,4 +50,5 @@ dab -ran "~/.config/darchbox/autostart_online.sh" &
 
 # start desktop environment
 
-exec openbox-session
+exec openbox-session &
+spacefm --desktop
