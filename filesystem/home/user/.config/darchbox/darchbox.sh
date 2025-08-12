@@ -205,18 +205,15 @@ exit_menu() {
 }
 
 configurations() {
-        option0="Basic Configuration files"
 	option1="Configuration files"
-	option2="Set Wallpaper"
+	option2="Wallpaper"
 	option3="Install optional packages"
         option4="Set fastest mirrors"
 
-	options="$option0\n$option1\n$option2\n$option3\n$option4"
+	options="$option1\n$option2\n$option3\n$option4"
 
 	chosen="$(echo -e "$options" | rofi_vmenu "Configurations:")"
 	case $chosen in
-                $option0)
-                        geany -i $BASIC_CONFIG_FILES_LIST;;
                 $option1)
                         geany -i $CONFIG_FILES_LIST;;
                 $option2)
