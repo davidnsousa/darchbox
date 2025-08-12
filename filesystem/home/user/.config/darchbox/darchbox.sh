@@ -216,7 +216,6 @@ update_mirrors() {
 
 case $1 in
         "-k") keybindings;;
-        "-rw") random_wallpaper;;
         "-r") refresh;;
         "-l") launcher;;
         "-srun") sandbox;;
