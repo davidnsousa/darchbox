@@ -197,21 +197,7 @@ exit_menu() {
 }
 
 configurations() {
-	option1="Configuration files"
-	option3="Install optional packages"
-        option4="Set fastest mirrors"
-
-	options="$option1\n$option3\n$option4"
-
-	chosen="$(echo -e "$options" | rofi_vmenu "Configurations:")"
-	case $chosen in
-                $option1)
-                        geany -i $CONFIG_FILES_LIST;;
-                $option3)
-                        terminal ". $0; install_packages";;
-                $option4)
-                        terminal ". $0; update_mirrors";;
-        esac
+        geany -i $CONFIG_FILES_LIST
 }
 
 run_after_network() {
@@ -262,5 +248,8 @@ case $1 in
         "-kw") wmctrl -c :ACTIVE:;;
         "-sde") wmctrl -k on;;
         "-cw") cycle_windows;;
+        
+        "-um") update_mirrors;;
+        "-ip") install_packages;;
 
 esac
