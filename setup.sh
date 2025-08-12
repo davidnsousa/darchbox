@@ -36,7 +36,6 @@ PKGS=(
   polybar
   wmctrl
   pactl
-  nitrogen
   dialog
   libnotify
   slock
@@ -101,11 +100,6 @@ sudo gpasswd -a $USER video
 
 cp -r filesystem/home/user/. $HOME
 sudo cp filesystem/etc/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
-
-# import wallpapers
-
-cd $HOME
-git clone https://github.com/davidnsousa/wallpapers
 
 # take a system snapshot
 

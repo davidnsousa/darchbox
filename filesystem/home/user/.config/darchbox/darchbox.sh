@@ -57,14 +57,6 @@ keybindings() {
         fi
 }
 
-wallpaper() {
-   nitrogen ~/wallpapers     
-}
-
-random_wallpaper() {
-	nitrogen --random --set-scaled ~/wallpapers	
-}
-
 refresh() {
         openbox --reconfigure
         xbindkeys
@@ -206,18 +198,15 @@ exit_menu() {
 
 configurations() {
 	option1="Configuration files"
-	option2="Wallpaper"
 	option3="Install optional packages"
         option4="Set fastest mirrors"
 
-	options="$option1\n$option2\n$option3\n$option4"
+	options="$option1\n$option3\n$option4"
 
 	chosen="$(echo -e "$options" | rofi_vmenu "Configurations:")"
 	case $chosen in
                 $option1)
                         geany -i $CONFIG_FILES_LIST;;
-                $option2)
-                        wallpaper;;
                 $option3)
                         terminal ". $0; install_packages";;
                 $option4)

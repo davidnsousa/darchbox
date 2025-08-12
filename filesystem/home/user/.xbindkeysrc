@@ -6,10 +6,6 @@ Mod4 + k
 "dab -c"
 Mod4 + c
 
-#>Set random wallpaper
-"dab -rw"
-Alt + w
-
 #>Refresh environment
 "dab -r"
 Mod4 + r

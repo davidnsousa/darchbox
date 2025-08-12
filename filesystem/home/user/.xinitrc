@@ -41,11 +41,6 @@ export -f dab
 xbindkeys &
 udiskie --no-notify &
 picom &
-if [ "$(grep 'random_wallpaper_on_startup' ~/.config/darchbox/settings | sed 's/^[^ ]* //')" == "true" ]; then
-    dab -rw &
-else
-    nitrogen --restore &
-fi &
 if [ "$(grep 'vpn_autostart' ~/.config/darchbox/settings | sed 's/^[^ ]* //')" == "true" ]; then
         $(grep 'vpn_connect' ~/.config/darchbox/settings | sed 's/^[^ ]* //')
 fi &
