@@ -39,7 +39,7 @@ PKGS=(
   dialog
   libnotify
   slock
-  nemo
+  spacefm-gtk2-bin
   xarchiver
   flameshot
   mirage

@@ -234,7 +234,7 @@ case $1 in
                 
         "-tm") terminal btop;;
         "-e") geany -i ${@:2};;
-        "-f") nemo --existing-window;;
+        "-f") spacefm -r;;
         "-sc") pavucontrol;;
         "-d") arandr;;
         "-ss") flameshot gui;;
