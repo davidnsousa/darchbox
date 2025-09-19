@@ -39,7 +39,7 @@ PKGS=(
   dialog
   libnotify
   slock
-  spacefm-gtk2-bin
+  spacefm-bin
   xarchiver
   flameshot
   mirage
