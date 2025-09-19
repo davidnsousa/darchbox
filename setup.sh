@@ -19,7 +19,7 @@ PKGS=(
   udiskie
   inotify-tools
   btop
-  pavucontrol-gtk2
+  pulsemixer
   networkmanager
   light
   openbox-arc-git

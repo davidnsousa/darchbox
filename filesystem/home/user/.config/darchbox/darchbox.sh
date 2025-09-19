@@ -235,7 +235,7 @@ case $1 in
         "-tm") terminal btop;;
         "-e") geany -i ${@:2};;
         "-f") spacefm -r;;
-        "-sc") pavucontrol;;
+        "-sc") terminal pulsemixer;;
         "-d") arandr;;
         "-ss") flameshot gui;;
         "-ca") galculator;;
