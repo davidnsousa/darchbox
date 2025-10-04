@@ -2,7 +2,7 @@ Xft.dpi: 192
 xterm*faceName: DejaVuSansMono
 xterm*faceSize: 10
 Xcursor.size: 48
-xterm*background: #404552
+xterm*background: #282C34
 xterm*foreground: #C5C8C6
 xterm*highlightSelection: true
 xterm*selectToClipboard: true
