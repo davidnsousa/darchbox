@@ -38,6 +38,8 @@ dab() {
 
 export -f dab
 
+export QT_ENABLE_HIGHDPI_SCALING=0
+
 xbindkeys &
 udiskie --no-notify &
 picom &
